@@ -1,0 +1,210 @@
+// Design tokens
+$font-family-base: "Inter", system-ui, -apple-system, sans-serif;
+
+$color-page-bg: #eceef2;
+$color-card-bg: #0f0821;
+$color-card-border: #9d4edd;
+$color-text-primary: #ffffff;
+$color-text-muted: #a099b0;
+$color-text-bids: #b794f4;
+$color-footer-bg: #07040d;
+$color-footer-cta: #5b21b6;
+$color-footer-cta-hover: #6d28d9;
+$color-accent-purple: #9333ea;
+$color-accent-pink: #ff6ad5;
+$color-accent-blue: #4fd1ff;
+
+$card-radius: 28px;
+$card-width: 318px;
+$grid-gap: 28px;
+$page-padding-x: clamp(20px, 4vw, 72px);
+$page-padding-y: clamp(48px, 6vw, 96px);
+$max-content-width: 1440px;
+
+// Base
+body.app-body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: $font-family-base;
+  color: $color-text-primary;
+  background: $color-page-bg;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.flash-notice {
+  margin: 0;
+  padding: 12px $page-padding-x;
+  background: #d1fae5;
+  color: #065f46;
+  font-size: 0.875rem;
+}
+
+// Games page
+.games-page {
+  position: relative;
+  overflow: hidden;
+  padding: $page-padding-y $page-padding-x calc(#{$page-padding-y} + 80px);
+}
+
+.games-page__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+
+  &--left {
+    top: 8%;
+    left: -8%;
+    width: min(42vw, 520px);
+    height: min(42vw, 520px);
+    background: radial-gradient(circle, rgba($color-accent-pink, 0.45) 0%, rgba($color-accent-pink, 0) 70%);
+  }
+
+  &--right {
+    top: 18%;
+    right: -6%;
+    width: min(38vw, 480px);
+    height: min(38vw, 480px);
+    background: radial-gradient(circle, rgba($color-accent-blue, 0.42) 0%, rgba($color-accent-blue, 0) 70%);
+  }
+}
+
+.games-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, $card-width);
+  gap: $grid-gap;
+  max-width: $max-content-width;
+  margin: 0 auto;
+  justify-content: center;
+
+  @media (max-width: 1380px) {
+    grid-template-columns: repeat(3, $card-width);
+  }
+
+  @media (max-width: 1040px) {
+    grid-template-columns: repeat(2, $card-width);
+    gap: 20px;
+  }
+
+  @media (max-width: 680px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+// Game card
+.game-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: $card-width;
+  margin: 0 auto;
+  border-radius: $card-radius;
+  overflow: hidden;
+  border: 1px solid $color-card-border;
+  background:
+    radial-gradient(circle at 0% 100%, rgba(93, 33, 182, 0.18) 0%, rgba(15, 8, 33, 0) 55%),
+    $color-card-bg;
+  box-shadow: 0 16px 32px rgba(15, 8, 33, 0.16);
+}
+
+.game-card__image {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #1a1030;
+  border-bottom: 1px solid rgba(157, 78, 221, 0.15);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+  }
+}
+
+.game-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 323px;
+  padding: 24px;
+}
+
+.game-card__title {
+  margin: 0;
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: $color-text-primary;
+}
+
+.game-card__details {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.game-card__pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.game-card__condition {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: $color-text-muted;
+}
+
+.game-card__price {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: $color-text-primary;
+}
+
+.game-card__bids {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: $color-text-bids;
+}
+
+.game-card__accepts {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.game-card__accepts-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #d1d1e0;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.game-card__payment-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  color: #d1d1e0;
+}
+
+.payment-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+  flex-shrink: 0;
+  font-size: 18px;
+  line-height: 1;
+}

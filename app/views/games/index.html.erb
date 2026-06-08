@@ -1,16 +1,16 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Games" %>
 
-<h1>Games</h1>
+<% if notice.present? %>
+  <p class="flash-notice"><%= notice %></p>
+<% end %>
 
-<div id="games">
-  <% @games.each do |game| %>
-    <%= render game %>
-    <p>
-      <%= link_to "Show this game", game %>
-    </p>
-  <% end %>
-</div>
+<main class="games-page">
+  <div class="games-page__glow games-page__glow--left" aria-hidden="true"></div>
+  <div class="games-page__glow games-page__glow--right" aria-hidden="true"></div>
 
-<%= link_to "New game", new_game_path %>
+  <div class="games-grid" id="games">
+    <% @games.each do |game| %>
+      <%= render game %>
+    <% end %>
+  </div>
+</main>
