@@ -1,19 +1,22 @@
-<div id="<%= dom_id game %>">
-  <%= image_tag "board_game_images/#{game.name}.jpg" %>
-
-  <div>
-    <strong>Name:</strong>
-    <%= game.name %>
+<article class="game-card" id="<%= dom_id game %>">
+  <div class="game-card__image">
+    <%= image_tag game_cover_image(game), alt: game.name %>
   </div>
 
-  <div>
-    <strong>Condition:</strong>
-    <%= game.condition %>
-  </div>
+  <div class="game-card__body">
+    <h2 class="game-card__title"><%= game.name %></h2>
 
-  <div>
-    <strong>Price cents:</strong>
-    <%= game.price_cents %>
-  </div>
+    <div class="game-card__details">
+      <div class="game-card__pricing">
+        <span class="game-card__condition"><%= game_condition_label(game) %></span>
+        <span class="game-card__price"><%= formatted_game_price(game) %></span>
+        <span class="game-card__bids"><%= pluralize(game_bid_count(game), "bid") %></span>
+      </div>
 
-</div>
+      <div class="game-card__accepts">
+        <span class="game-card__accepts-label">Accepts:</span>
+        <%= render "shared/payment_icons" %>
+      </div>
+    </div>
+  </div>
+</article>
