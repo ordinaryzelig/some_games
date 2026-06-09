@@ -1,0 +1,290 @@
+// Premium Color Palette matching your original Figma spec
+$card-bg-gradient: linear-gradient(180deg, #1a122b 0%, #110c1c 100%);
+$text-white: #ffffff;
+$text-muted: #827b93;
+$purple-light: #b794f4;
+$purple-bright: #9f7aea; 
+$glow-shadow: rgba(159, 122, 234, 0.35);
+
+// ==========================================
+// ACCENT BORDER, LIBERAL MARGINS & AURORA BG
+// ==========================================
+.marketplace-page-wrapper {
+  position: relative;
+  min-height: 100vh;
+  padding: 5rem 0;
+  padding-bottom: 10rem;
+  overflow: hidden;
+  
+  background-color: #f7f3ff;
+  background-image: 
+    radial-gradient(at 0% 25%, rgba(244, 114, 182, 0.45) 0px, transparent 45%), 
+    radial-gradient(at 100% 55%, rgba(45, 212, 191, 0.38) 0px, transparent 50%),
+    radial-gradient(at 90% 10%, rgba(192, 132, 252, 0.4) 0px, transparent 40%),
+    radial-gradient(at 5% 75%, rgba(251, 207, 232, 0.55) 0px, transparent 45%);
+
+}
+
+.marketplace-container {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding-left: 5rem; 
+  padding-right: 5rem;
+
+  @media (max-width: 1200px) {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  @media (max-width: 576px) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@keyframes fadeUpIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// The Core Card
+.premium-game-card {
+  background: $card-bg-gradient; 
+  border-radius: 12px; 
+  overflow: hidden;
+  width: 100%;
+  min-height: 540px; 
+  display: flex;
+  flex-direction: column;
+  
+  animation: fadeUpIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--animation-order) * 0.06s);
+  
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+
+  // Focus hover animation attached directly to the card selector element
+  &:hover {
+    transform: translateY(-14px); 
+    box-shadow: 0 22px 40px $glow-shadow;
+  }
+}
+
+// Image Area
+.card-img-wrapper {
+  width: 100%;
+  aspect-ratio: 3 / 2; 
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+  .cinematic-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: top center; 
+  }
+}
+
+// Typography & Spacing Configuration
+.card-body {
+  padding: 1.75rem 1.5rem 1.5rem !important; 
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+}
+
+.game-title {
+  font-size: 1.6rem; 
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.75rem; 
+}
+
+// Pricing Bottom Section
+.pricing-section {
+  margin-top: auto; 
+}
+
+.condition-text {
+  font-size: 0.85rem;
+  color: $purple-light;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.price-text {
+  font-size: 1.75rem; 
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.bids-text {
+  font-size: 0.85rem;
+  color: $purple-bright;
+  font-weight: 500;
+  margin-bottom: 1.5rem; 
+}
+
+.payment-icons {
+  color: $text-muted;
+  
+  span {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  i {
+    font-size: 1.1rem; 
+    color: #cbd5e0;
+  }
+}
+
+// ==========================================
+// FIXED & POLISHED: PREMIUM FOOTER DESIGN
+// ==========================================
+.custom-premium-footer {
+  position: relative;
+  background-color: #0b0714; 
+  padding: 0 2rem 4rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: center;
+  color: $text-white;
+
+  .footer-hero-graphic {
+    position: absolute;
+    top: -60px; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    
+    .floating-cube {
+      height: 240px; 
+      width: auto;
+      object-fit: contain;
+    }
+  }
+
+  .footer-content-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 160px; 
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .footer-top-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    width: 100%;
+
+    @media (max-width: 991px) {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      text-align: center;
+    }
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    .brand-name {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+  }
+
+  .footer-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer-action-btn {
+    background: linear-gradient(180deg, #4d23a3 0%, #251152 100%);
+    color: #ffffff;
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    padding: 0.75rem 2.2rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.25s ease;
+
+    &:hover {
+      background: linear-gradient(180deg, #5c2ec2 0%, #2e1566 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 24px rgba(126, 34, 206, 0.45);
+      transform: translateY(-1px);
+    }
+    
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-end;
+
+    @media (max-width: 991px) {
+      justify-content: center;
+    }
+
+    a {
+      color: #9ca3af;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .footer-social-row {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background-color: #8b5cf6; 
+      color: #ffffff;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+
+      &:hover {
+        transform: scale(1.1);
+        background-color: #a78bfa;
+      }
+    }
+  }
+}
