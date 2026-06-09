@@ -1,19 +1,25 @@
-<div id="<%= dom_id game %>">
-  <%= image_tag "board_game_images/#{game.name}.jpg" %>
-
-  <div>
-    <strong>Name:</strong>
-    <%= game.name %>
+<article class="game-card" id="<%= dom_id game %>">
+  <div class="game-card__image">
+    <%= image_tag "board_game_images/#{game.name}.jpg", alt: game.name, loading: "lazy" %>
   </div>
 
-  <div>
-    <strong>Condition:</strong>
-    <%= game.condition %>
-  </div>
+  <div class="game-card__body">
+    <h2 class="game-card__title"><%= game.name %></h2>
 
-  <div>
-    <strong>Price cents:</strong>
-    <%= game.price_cents %>
-  </div>
+    <div class="game-card__meta">
+      <p class="game-card__condition"><%= game_condition_label(game) %></p>
+      <p class="game-card__price"><%= game_price(game) %></p>
+      <p class="game-card__bids">2 bids</p>
 
-</div>
+      <div class="game-card__accepts">
+        <span class="game-card__accepts-label">Accepts:</span>
+        <span class="game-card__pay-icons">
+          <%= image_tag "payments/cash.svg",    alt: "Cash",     class: "pay-icon" %>
+          <%= image_tag "payments/cashapp.svg", alt: "Cash App", class: "pay-icon" %>
+          <%= image_tag "payments/paypal.svg",  alt: "PayPal",   class: "pay-icon" %>
+          <%= image_tag "payments/zelle.svg",   alt: "Zelle",    class: "pay-icon" %>
+        </span>
+      </div>
+    </div>
+  </div>
+</article>
