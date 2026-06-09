@@ -1,0 +1,167 @@
+body {
+    background-image: var(--frame-bg);
+    background-size: auto;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-color: white;
+}
+
+.notice {
+    color: #28a745;
+    margin-bottom: 1rem;
+}
+
+.games-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem auto;
+    width: 318px;
+}
+
+.new-game-btn {
+    background-color: #1e0f3a !important;
+    border: none;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background-color: #2a1650 !important;
+        color: white;
+    }
+}
+
+@media (min-width: 660px) {
+    .games-header {
+        width: 660px;
+    }
+}
+
+@media (min-width: 1001px) {
+    .games-header {
+        width: 1002px;
+    }
+}
+
+@media (min-width: 1345px) {
+    .games-header {
+        width: 1344px;
+    }
+}
+
+@media (min-width: 1674px) {
+    .games-header {
+        width: 1686px;
+    }
+}
+
+.games-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.game-wrapper {
+    flex-shrink: 0;
+}
+
+.games-container a,
+.games-header a,
+.site-footer a {
+    text-decoration: none;
+    border: none;
+}
+
+.game-card {
+    border-radius: 16px;
+    background-color: rgba(74, 44, 122, 0.85);
+    color: white;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    width: 318px;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.game-card-image-wrapper {
+    width: 318px;
+    height: 323px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.game-card-image {
+    height: 323px;
+    width: 318px;
+    object-fit: fill;
+    display: block;
+}
+
+.card-body {
+    padding: 1.5rem;
+    background-color: #1e0f3a;
+    flex: 1;
+
+    .card-title,
+    .card-text,
+    .game-price,
+    .game-bids,
+    .payment-methods {
+        text-decoration: none;
+        border: none;
+    }
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    color: #F4F6FA;
+    width: 258.5px;
+    height: 200px;
+}
+
+.card-text {
+    font-size: 14px;
+    margin: 0;
+    color: #B5B6C4;
+}
+
+.game-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #EDEDF1;
+    margin: 0;
+}
+
+.game-bids {
+    font-size: 12px;
+    margin: 0;
+    color: #B080FF;
+}
+
+.payment-methods {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.1rem;
+    color: #B9C1D6;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.payment-methods-label {
+    font-size: 0.8rem;
+    color: #B9C1D6;
+    margin-right: 0.25rem;
+}

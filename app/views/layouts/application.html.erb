@@ -23,7 +23,8 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body style="--frame-bg: url('<%= asset_path('frame.svg') %>')">
     <%= yield %>
+    <%= render "layouts/footer" %>
   </body>
 </html>

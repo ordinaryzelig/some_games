@@ -1,19 +1,16 @@
-<div id="<%= dom_id game %>">
-  <%= image_tag "board_game_images/#{game.name}.jpg" %>
-
-  <div>
-    <strong>Name:</strong>
-    <%= game.name %>
+<div id="<%= dom_id game %>" class="card game-card">
+  <% image_path = "board_game_images/#{game.name}.jpg" %>
+  <div class="game-card-image-wrapper">
+    <%= image_tag image_path, class: "game-card-image", alt: game.name, onerror: "this.src='#{asset_path('placeholder.svg')}'" %>
   </div>
 
-  <div>
-    <strong>Condition:</strong>
-    <%= game.condition %>
+  <div class="card-body">
+    <h5 class="card-title"><%= game.name %></h5>
+    <p class="card-text">
+      <%= game.condition.to_s.humanize %>
+    </p>
+    <p class="game-price"><%= cents_to_dollars(game.price_cents) %></p>
+    <p class="game-bids"><%= game.random_bid_count %> bids</p>
+    <%= render "payment_methods" %>
   </div>
-
-  <div>
-    <strong>Price cents:</strong>
-    <%= game.price_cents %>
-  </div>
-
 </div>
