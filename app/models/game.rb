@@ -7,4 +7,8 @@ class Game < ApplicationRecord
     :as_is     => 4,
   }
 
+  def random_bid_count
+    rand(1..10)
+  end
+
 end
