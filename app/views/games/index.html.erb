@@ -1,16 +1,11 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Games" %>
 
-<h1>Games</h1>
+<div class="games-page">
+  <div class="games-page__inner">
+    <div id="games" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 gx-3 games-grid">
+      <%= render @games %>
+    </div>
+  </div>
 
-<div id="games">
-  <% @games.each do |game| %>
-    <%= render game %>
-    <p>
-      <%= link_to "Show this game", game %>
-    </p>
-  <% end %>
+  <%= render "shared/footer" %>
 </div>
-
-<%= link_to "New game", new_game_path %>

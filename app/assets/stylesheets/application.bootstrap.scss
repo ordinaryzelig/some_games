@@ -1,4 +1,44 @@
+// --- Figma design tokens feeding Bootstrap -------------------------------
+// These override Bootstrap's `!default` variables, so Bootstrap's own
+// components (cards, buttons, forms, grid) render close to the Figma design
+// before any custom CSS is layered on. Must precede the Bootstrap import.
+
+$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+$border-radius:    8px;
+$border-radius-sm: 8px;
+$border-radius-lg: 8px;
+
+$primary: #7b2dff;
+$dark:    #160d27;
+
+// Cards (game grid, show, form surfaces)
+$card-bg:            #160d27;
+$card-color:         #f4f6fa;
+$card-border-width:  0;
+$card-border-radius: 8px;
+$card-cap-bg:        transparent;
+
+// Dark form controls
+$input-bg:                       rgba(255, 255, 255, 0.04);
+$input-disabled-bg:              rgba(255, 255, 255, 0.02);
+$input-color:                    #f4f6fa;
+$input-border-color:             rgba(255, 255, 255, 0.14);
+$input-focus-border-color:       #b080ff;
+$input-focus-box-shadow:         0 0 0 0.2rem rgba(176, 128, 255, 0.25);
+$input-placeholder-color:        #8b8c9e;
+
+$form-label-color:               #b5b6c4;
+$form-label-font-weight:         600;
+$form-label-font-size:           0.8rem;
+
+$form-select-bg:                 rgba(255, 255, 255, 0.04);
+$form-select-color:              #f4f6fa;
+$form-select-border-color:       rgba(255, 255, 255, 0.14);
+$form-select-indicator-color:    #b5b6c4;
+$form-select-focus-border-color: #b080ff;
+
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
-@import 'games'
+@import 'games';
