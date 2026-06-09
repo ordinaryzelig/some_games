@@ -1,0 +1,245 @@
+$shadow-realm:     #160d27;
+$paper-pawn:       #f4f6fa;
+$gray-100:         #ededf1;
+$gray-300:         #b5b6c4;
+$silver-token:     #b9c1d6;
+$portal-purple-60: #b080ff;
+$portal-purple-80: #9556ff;
+
+$radius-lg: 8px;
+
+$cta-gradient: linear-gradient(
+  186.46deg,
+  rgba(151, 89, 255, 0.5) 14.96%,
+  rgba(123, 45, 255, 0.5) 41.35%,
+  rgba(44, 26, 77, 0.5) 79.7%,
+  rgba(22, 13, 39, 0.5) 101.02%
+);
+
+$breakpoint-lg: 991.98px;
+
+body {
+  min-height: 100vh;
+  background-color: #eceef5;
+  background-image:
+    radial-gradient(55% 45% at 12% 6%,  rgba(255, 178, 226, 0.55), transparent 70%),
+    radial-gradient(50% 42% at 90% 5%,  rgba(206, 184, 255, 0.50), transparent 70%),
+    radial-gradient(55% 55% at 97% 52%, rgba(168, 232, 222, 0.50), transparent 70%),
+    radial-gradient(55% 55% at 3% 68%,  rgba(199, 170, 255, 0.55), transparent 70%),
+    radial-gradient(48% 42% at 68% 96%, rgba(255, 190, 230, 0.45), transparent 70%);
+  background-attachment: fixed;
+}
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: $radius-lg;
+  background: $shadow-realm;
+  color: $paper-pawn;
+}
+
+.game-card__image {
+  width: 100%;
+  height: 323px;
+  overflow: hidden;
+  background-color: $shadow-realm;
+}
+
+.game-card__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  object-position: center;
+}
+
+.game-card__body {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  padding: 32px;
+}
+
+.game-card__title {
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.game-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 40px;
+}
+
+.game-card__condition {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: $gray-300;
+}
+
+.game-card__price {
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: $gray-100;
+}
+
+.game-card__bids {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  color: $portal-purple-60;
+}
+
+.game-card__accepts {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.game-card__accepts-label {
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  color: $silver-token;
+}
+
+.game-card__pay-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pay-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.site-footer {
+  position: relative;
+  margin-top: 96px;
+  padding: 40px 0 48px;
+  background: $shadow-realm;
+  color: $paper-pawn;
+}
+
+.site-footer__cube {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -24%);
+  pointer-events: none;
+}
+
+.site-footer__cube img {
+  display: block;
+  width: 200px;
+  height: auto;
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding-top: 112px;
+}
+
+.site-footer__brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 24px;
+}
+
+.site-footer__logo {
+  width: 200px;
+  height: auto;
+}
+
+.site-footer__links {
+  display: flex;
+  gap: 32px;
+}
+
+.site-footer__links a {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  color: $paper-pawn;
+  text-decoration: none;
+}
+
+.site-footer__links a:hover {
+  text-decoration: underline;
+}
+
+.site-footer__cta {
+  display: inline-flex;
+  padding: 16px 24px;
+  border-radius: $radius-lg;
+  background-color: rgba(123, 45, 255, 0.4);
+  background-image: $cta-gradient;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
+  color: $paper-pawn;
+  text-decoration: none;
+}
+
+.site-footer__social {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.site-footer__social a {
+  display: inline-flex;
+}
+
+.site-footer__social img {
+  display: block;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+@media (max-width: $breakpoint-lg) {
+  .site-footer {
+    margin-top: 90px;
+  }
+
+  .site-footer__cube {
+    position: static;
+    display: flex;
+    justify-content: center;
+    transform: none;
+    margin-top: -70px;
+  }
+
+  .site-footer__inner {
+    padding-top: 32px;
+  }
+
+  .site-footer__brand {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .site-footer__links {
+    justify-content: center;
+  }
+}

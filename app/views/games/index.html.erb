@@ -1,16 +1,13 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Games" %>
 
-<h1>Games</h1>
-
-<div id="games">
-  <% @games.each do |game| %>
-    <%= render game %>
-    <p>
-      <%= link_to "Show this game", game %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New game", new_game_path %>
+<main class="games-page">
+  <div class="container py-5">
+    <div class="row gx-3 gy-4">
+      <% @games.each do |game| %>
+        <div class="col-12 col-lg-3">
+          <%= render game %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</main>

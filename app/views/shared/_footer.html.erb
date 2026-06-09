@@ -1,0 +1,25 @@
+<footer class="site-footer">
+  <div class="site-footer__cube">
+    <%= image_tag "footer_cube.png", alt: "", aria: { hidden: "true" } %>
+  </div>
+
+  <div class="site-footer__inner container">
+    <div class="site-footer__brand">
+      <%= image_tag "turnip_cake_logo.svg", alt: "Turnip Cake", class: "site-footer__logo" %>
+
+      <nav class="site-footer__links" aria-label="Footer">
+        <%= link_to "About", "#" %>
+        <%= link_to "Support", "#" %>
+        <%= link_to "Privacy Policy", "#" %>
+      </nav>
+    </div>
+
+    <%= link_to "Find events near you", "#", class: "site-footer__cta" %>
+
+    <div class="site-footer__social">
+      <%= link_to image_tag("social/facebook.svg",  alt: "Facebook"),  "#", aria: { label: "Facebook" } %>
+      <%= link_to image_tag("social/instagram.svg", alt: "Instagram"), "#", aria: { label: "Instagram" } %>
+      <%= link_to image_tag("social/x.svg",         alt: "X"),         "#", aria: { label: "X" } %>
+    </div>
+  </div>
+</footer>
