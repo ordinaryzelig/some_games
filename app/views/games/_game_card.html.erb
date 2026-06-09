@@ -1,0 +1,21 @@
+<div class="col">
+  <article id="<%= dom_id game %>" class="game-card h-100">
+    <%= image_tag "board_game_images/#{game.name}.jpg",
+                  alt: game.name,
+                  loading: "lazy",
+                  class: "game-card__cover" %>
+
+    <div class="game-card__body">
+      <h2 class="game-card__title">
+        <%= link_to game.name, game, class: "game-card__link stretched-link" %>
+      </h2>
+
+      <div class="game-card__meta">
+        <p class="game-card__condition"><%= game_condition_label(game) %></p>
+        <p class="game-card__price"><%= game_price(game) %></p>
+        <span class="game-card__bids">2 bids</span>
+        <%= render "accepts" %>
+      </div>
+    </div>
+  </article>
+</div>

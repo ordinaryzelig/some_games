@@ -1,0 +1,151 @@
+body {
+  font-family: $font-base;
+  color: $surface-dark;
+  background-color: $bg-base;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.page-wrap {
+  flex: 1 0 auto;
+}
+
+$c: 250rem;
+
+.aurora {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: .45;
+  background-repeat: no-repeat;
+  background-image:
+    url(bg-blob.webp), url(bg-blob.webp), url(bg-blob.webp),
+    url(bg-blob.webp), url(bg-blob.webp), url(bg-blob.webp),
+    url(bg-blob.webp), url(bg-blob.webp), url(bg-blob.webp),
+    url(bg-blob.webp), url(bg-blob.webp), url(bg-blob.webp),
+    url(bg-blob.webp), url(bg-blob.webp), url(bg-blob.webp),
+    url(bg-blob.webp), url(bg-blob.webp), url(bg-blob.webp),
+    url(bg-blob.webp), url(bg-blob.webp), url(bg-blob.webp),
+    url(bg-blob.webp), url(bg-blob.webp), url(bg-blob.webp);
+  background-size:
+    61rem auto, 61rem auto, 69rem auto, 92rem auto, 61rem auto, 76rem auto,
+    61rem auto, 61rem auto, 69rem auto, 92rem auto, 61rem auto, 76rem auto,
+    61rem auto, 61rem auto, 69rem auto, 92rem auto, 61rem auto, 76rem auto,
+    61rem auto, 61rem auto, 69rem auto, 92rem auto, 61rem auto, 76rem auto;
+  background-position:
+    -45rem -7rem,        75rem 25rem,        -52rem 88rem,        62rem 55rem,        -45rem 178rem,        78rem 195rem,
+    -45rem #{-7rem+$c},  75rem #{25rem+$c},  -52rem #{88rem+$c},  62rem #{55rem+$c},  -45rem #{178rem+$c},  78rem #{195rem+$c},
+    -45rem #{-7rem+$c*2}, 75rem #{25rem+$c*2}, -52rem #{88rem+$c*2}, 62rem #{55rem+$c*2}, -45rem #{178rem+$c*2}, 78rem #{195rem+$c*2},
+    -45rem #{-7rem+$c*3}, 75rem #{25rem+$c*3}, -52rem #{88rem+$c*3}, 62rem #{55rem+$c*3}, -45rem #{178rem+$c*3}, 78rem #{195rem+$c*3};
+}
+
+.games-page {
+  padding-top: 5rem;
+}
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  background-color: $surface-dark;
+  border-radius: $card-radius;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.game-card__cover {
+  display: block;
+  width: 100%;
+  flex: 0 0 auto;
+  aspect-ratio: 318 / 323;
+  object-fit: fill;
+}
+
+.game-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: 1.25rem;
+  color: $text-on-dark;
+}
+
+.game-card__title {
+  margin: 0;
+  font-family: $font-heading;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #F4F6FA;
+}
+
+.game-card__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.game-card__meta {
+  padding-top: 6.25rem;
+}
+
+.game-card__condition {
+  margin: 0 0 .75rem;
+  color: $condition-text;
+  font-family: $font-base;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.game-card__price {
+  margin: 0 0 .25rem;
+  font-family: $font-heading;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.game-card__bids {
+  display: inline-block;
+  color: #B080FF;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.game-card__accepts {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  color: rgba($text-on-dark, .6);
+}
+
+.game-card__accepts-label {
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+.game-card__accepts-list {
+  gap: .55rem;
+}
+
+.game-card__pay-icon {
+  display: block;
+  width: auto;
+  height: 1.15rem;
+}
+
+.games-page__notice {
+  margin-bottom: 1.5rem;
+  padding: .75rem 1rem;
+  border-radius: 10px;
+  background-color: rgba($brand-violet, .12);
+  color: #6d28d9;
+  font-weight: 600;
+}

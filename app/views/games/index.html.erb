@@ -1,16 +1,15 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Games" %>
 
-<h1>Games</h1>
+<main class="games-page">
+  <div class="container">
+    <h1 class="visually-hidden">Games</h1>
 
-<div id="games">
-  <% @games.each do |game| %>
-    <%= render game %>
-    <p>
-      <%= link_to "Show this game", game %>
-    </p>
-  <% end %>
-</div>
+    <% if notice.present? %>
+      <p class="games-page__notice" role="status"><%= notice %></p>
+    <% end %>
 
-<%= link_to "New game", new_game_path %>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xxl-4 gx-3 gy-5">
+      <%= render partial: "game_card", collection: @games, as: :game %>
+    </div>
+  </div>
+</main>

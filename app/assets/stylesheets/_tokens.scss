@@ -1,0 +1,25 @@
+// =============================================================
+//  Design tokens — shared across the listing and the footer.
+//  Palette from the Figma (Home-Desktop-1920); surface colour
+//  and the CTA gradient stops are Figma-exact values.
+// =============================================================
+
+$bg-base:         #f4f6fa;
+$surface-dark:    #160d27;
+$brand-violet:    #9759ff;
+$brand-violet-hi: #a96fff; // hover/lighter step
+$condition-text:  #b5b6c4; // condition label text colour
+$text-on-dark:    #f4f6fa;
+
+// Footer CTA gradient — Figma-exact (note the 0.5 alpha on every stop).
+$cta-gradient: linear-gradient(205.32deg,
+  rgba(151, 89, 255, 0.5) 14.96%,
+  rgba(123, 45, 255, 0.5) 41.35%,
+  rgba(44, 26, 77, 0.5) 79.7%,
+  rgba(22, 13, 39, 0.5) 101.02%);
+
+$card-radius:  8px; // Figma radius-lg
+
+// Fonts — Rubik for headings/price (per Figma), Inter for UI/body.
+$font-base:    "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+$font-heading: "Rubik", system-ui, -apple-system, sans-serif;
