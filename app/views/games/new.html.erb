@@ -1,11 +1,27 @@
-<% content_for :title, "New game" %>
+<% content_for :title, "Add New Game Listing" %>
 
-<h1>New game</h1>
+<div class="games-page-wrapper">
+  <%= render "ambient_glows" %>
 
-<%= render "form", game: @game %>
+  <main class="browse-section">
+    <div class="container-custom form-narrow-container">
+      <header class="games-header">
+        <div class="header-info">
+          <h1 class="page-title">Add New Game</h1>
+          <p class="page-subtitle">List a premium board game in our marketplace</p>
+        </div>
+        <div class="header-actions">
+          <%= link_to games_path, class: "btn-back-link" do %>
+            <span>Back to Marketplace</span>
+          <% end %>
+        </div>
+      </header>
 
-<br>
+      <div class="form-card-panel">
+        <%= render "form", game: @game %>
+      </div>
+    </div>
+  </main>
 
-<div>
-  <%= link_to "Back to games", games_path %>
+  <%= render "footer" %>
 </div>

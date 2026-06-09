@@ -3,7 +3,13 @@ class GamesController < ApplicationController
 
   # GET /games or /games.json
   def index
-    @games = Game.all
+    @games_per_page = 12
+    @page = (params[:page] || 1).to_i
+    @page = 1 if @page < 1
+    @total_games = Game.count
+    @total_pages = (@total_games.to_f / @games_per_page).ceil
+    @page = @total_pages if @page > @total_pages && @total_pages > 0
+    @games = Game.order(id: :asc).offset((@page - 1) * @games_per_page).limit(@games_per_page)
   end
 
   # GET /games/1 or /games/1.json

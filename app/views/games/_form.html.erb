@@ -1,8 +1,7 @@
-<%= form_with(model: game) do |form| %>
+<%= form_with(model: game, class: "marketplace-form") do |form| %>
   <% if game.errors.any? %>
-    <div style="color: red">
+    <div class="form-errors-alert">
       <h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>
-
       <ul>
         <% game.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,22 +10,24 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="form-group-custom">
+    <%= form.label :name, "Game Title", class: "form-label-custom" %>
+    <%= form.text_field :name, placeholder: "e.g. Dune Imperium Uprising", class: "form-input-custom", required: true %>
   </div>
 
-  <div>
-    <%= form.label :condition, style: "display: block" %>
-    <%= form.number_field :condition %>
+  <div class="form-group-custom">
+    <%= form.label :condition, "Condition", class: "form-label-custom" %>
+    <div class="select-wrapper-custom">
+      <%= form.select :condition, Game.conditions.keys.map { |k| [k.titleize, k] }, {}, { class: "form-input-custom select-custom" } %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :price_cents, style: "display: block" %>
-    <%= form.number_field :price_cents %>
+  <div class="form-group-custom">
+    <%= form.label :price_cents, "Price (in Cents)", class: "form-label-custom" %>
+    <%= form.number_field :price_cents, placeholder: "e.g. 28099 for $280.99", class: "form-input-custom", required: true %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-actions-custom">
+    <%= form.submit class: "btn-primary-gradient btn-submit-custom" %>
   </div>
 <% end %>

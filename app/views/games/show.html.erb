@@ -1,10 +1,139 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, "#{@game.name} - Premium Tabletop Game Listing | Turnip Cake" %>
+<% content_for :description, "View details, price, condition, active bids, and payment methods for #{@game.name} on the Turnip Cake marketplace." %>
 
-<%= render @game %>
+<div class="games-page-wrapper">
+  <%= render "ambient_glows" %>
 
-<div>
-  <%= link_to "Edit this game", edit_game_path(@game) %> |
-  <%= link_to "Back to games", games_path %>
+  <main class="browse-section">
+    <div class="container-custom">
+      <header class="games-header">
+        <div class="header-info">
+          <h1 class="page-title"><%= @game.name %></h1>
+          <p class="page-subtitle">Marketplace listing detail</p>
+        </div>
+        <div class="header-actions">
+          <%= link_to edit_game_path(@game), class: "btn-create-game" do %>
+            <i class="bi bi-pencil-square"></i>
+            <span>Edit Listing</span>
+          <% end %>
+          <%= link_to games_path, class: "btn-back-link" do %>
+            <i class="bi bi-chevron-left"></i>
+            <span>Back to Marketplace</span>
+          <% end %>
+        </div>
+      </header>
 
-  <%= button_to "Destroy this game", @game, method: :delete %>
+      <% if notice.present? %>
+        <div class="alert-custom" role="alert">
+          <i class="bi bi-check-circle-fill"></i>
+          <span><%= notice %></span>
+        </div>
+      <% end %>
+
+      <!-- Detail Card Layout -->
+      <div class="detail-card-container">
+        <div class="detail-image-section">
+          <div class="game-image-wrapper show-page-image">
+            <%= image_tag "board_game_images/#{@game.name}.jpg", class: "game-card-image", alt: @game.name %>
+          </div>
+        </div>
+
+        <div class="detail-info-section">
+          <div class="detail-info-card">
+            <%
+              badge_class, badge_text = case @game.condition
+              when 'mint'
+                ['badge-mint', 'Mint']
+              when 'excellent'
+                ['badge-like-new', 'Like New']
+              when 'good'
+                ['badge-good', 'Good']
+              else
+                ['badge-damaged', 'Damaged']
+              end
+              bids_count = (@game.id % 4) + 1
+
+              # Dynamic payment icons consistent with the index page cards
+              payment_icons = case @game.id % 4
+              when 0
+                [:cash, :cashapp, :paypal, :zelle]
+              when 1
+                [:cash, :paypal, :venmo, :zelle]
+              when 2
+                [:cash, :cashapp, :paypal, :venmo, :zelle]
+              else
+                [:cash, :cashapp, :venmo, :zelle]
+              end
+            %>
+            <div class="detail-meta-group">
+              <div class="game-condition-row">
+                <span class="game-condition-badge <%= badge_class %>"><%= badge_text %></span>
+              </div>
+              <div class="price-value show-page-price"><%= number_to_currency(@game.price_cents / 100.0) %></div>
+              <div class="bids-count show-page-bids"><%= bids_count %> active <%= 'bid'.pluralize(bids_count) %></div>
+            </div>
+
+            <div class="accepts-payments show-page-payments">
+              <span class="accepts-label">Available Payment Methods:</span>
+              <div class="payment-icons-list">
+                <% if payment_icons.include?(:cash) %>
+                  <span class="payment-icon-wrapper" title="Cash">
+                    <svg class="payment-icon-svg" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                      <path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2z"/>
+                    </svg>
+                    <span class="payment-icon-text">Cash</span>
+                  </span>
+                <% end %>
+                <% if payment_icons.include?(:cashapp) %>
+                  <span class="payment-icon-wrapper" title="Cash App">
+                    <svg class="payment-icon-svg" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h10A1.5 1.5 0 0 1 14.5 3v10a1.5 1.5 0 0 1-1.5 1.5H3zm5-3.08a1.5 1.5 0 0 0 1.25-.65l.05-.08V8.22l-.12.06a1.8 1.8 0 0 1-.95.3c-.45 0-.7-.2-.7-.57 0-.35.2-.5.8-.66.8-.23 1.5-.55 1.5-1.45 0-.8-.67-1.37-1.5-.18v-1.1h-.7v1.1a1.5 1.5 0 0 0-1.1.6l-.05.07v2.4l.1.05a1.8 1.8 0 0 0 .85.2c.45 0 .7.2.7.58 0 .35-.2.5-.8.67-.8.23-1.5.55-1.5 1.44 0 .8.67 1.38 1.52.18v1.1h.7v-1.1z"/>
+                    </svg>
+                    <span class="payment-icon-text">Cash App</span>
+                  </span>
+                <% end %>
+                <% if payment_icons.include?(:paypal) %>
+                  <span class="payment-icon-wrapper" title="PayPal">
+                    <svg class="payment-icon-svg" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M10.8 4.2c-.2-1.2-1.2-2.2-2.7-2.2H3.2c-.4 0-.7.3-.8.7L1 13.5c-.1.4.2.7.6.7h2.7l.8-5h.1c1.5 0 2.8-.6 3.2-2.3.4-1.8.2-2.7-1.6-2.7h-2L7.2 7.7h2c.8 0 1.2-.4 1.4-1.1.2-1 .1-1.8-.8-1.8h-1.6l.6-3.8h.4l.2.2c1.2 0 2 .7 1.8 2.2z"/>
+                    </svg>
+                    <span class="payment-icon-text">PayPal</span>
+                  </span>
+                <% end %>
+                <% if payment_icons.include?(:venmo) %>
+                  <span class="payment-icon-wrapper" title="Venmo">
+                    <svg class="payment-icon-svg" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M12.9 2.5L7.9 14H3.1L0.6 2.5h3.6l1.2 7.6 3.9-7.6h3.6z"/>
+                    </svg>
+                    <span class="payment-icon-text">Venmo</span>
+                  </span>
+                <% end %>
+                <% if payment_icons.include?(:zelle) %>
+                  <span class="payment-icon-wrapper" title="Zelle">
+                    <svg class="payment-icon-svg" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M2.5 2h11v2.5H6.8l6.7 7H2.5V9h6.7l-6.7-7z"/>
+                    </svg>
+                    <span class="payment-icon-text">Zelle</span>
+                  </span>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="show-actions-group">
+              <button class="btn-primary-gradient btn-bid-action">
+                <span>Place Bid Now</span>
+              </button>
+              
+              <%= button_to @game, method: :delete, class: "btn-secondary-custom btn-delete-action", form: { data: { turbo_confirm: "Are you sure you want to delete this listing?" } } do %>
+                <span>Delete Listing</span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%= render "footer" %>
 </div>

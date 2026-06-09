@@ -1,19 +1,92 @@
-<div id="<%= dom_id game %>">
-  <%= image_tag "board_game_images/#{game.name}.jpg" %>
+<%
+  # Map condition to badge class and text
+  badge_class, badge_text = case game.condition
+  when 'mint'
+    ['badge-mint', 'Mint']
+  when 'excellent'
+    ['badge-like-new', 'Like New']
+  when 'good'
+    ['badge-good', 'Good']
+  else # 'as_is' or others
+    ['badge-damaged', 'Damaged']
+  end
 
-  <div>
-    <strong>Name:</strong>
-    <%= game.name %>
+  # Generate bids based on game id
+  bids_count = (game.id % 4) + 1
+
+  # Select payment icons based on game id to create the variety shown in Figma
+  payment_icons = case game.id % 4
+  when 0
+    [:cash, :cashapp, :paypal, :zelle]
+  when 1
+    [:cash, :paypal, :venmo, :zelle]
+  when 2
+    [:cash, :cashapp, :paypal, :venmo, :zelle]
+  else
+    [:cash, :cashapp, :venmo, :zelle]
+  end
+%>
+
+<%= link_to game, class: "game-card", id: dom_id(game) do %>
+  <div class="game-image-wrapper">
+    <%= image_tag "board_game_images/#{game.name}.jpg", class: "game-card-image", alt: game.name, loading: "lazy" %>
   </div>
+  
+  <div class="game-card-details">
+    <div class="game-card-top">
+      <h3 class="game-title" title="<%= game.name %>"><%= game.name %></h3>
+    </div>
 
-  <div>
-    <strong>Condition:</strong>
-    <%= game.condition %>
+    <div class="game-card-bottom">
+      <div class="game-meta-group">
+        <div class="game-condition-row">
+          <span class="game-condition-badge <%= badge_class %>"><%= badge_text %></span>
+        </div>
+        <div class="price-value"><%= number_to_currency(game.price_cents / 100.0) %></div>
+        <div class="bids-count"><%= bids_count %> <%= 'bid'.pluralize(bids_count) %></div>
+      </div>
+
+      <div class="accepts-payments">
+        <span class="accepts-label">Accepts:</span>
+        <div class="payment-icons-list">
+          <% if payment_icons.include?(:cash) %>
+            <span class="payment-icon-wrapper" title="Cash">
+              <svg class="payment-icon-svg" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                <path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2z"/>
+              </svg>
+            </span>
+          <% end %>
+          <% if payment_icons.include?(:cashapp) %>
+            <span class="payment-icon-wrapper" title="Cash App">
+              <svg class="payment-icon-svg" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h10a1.5 1.5 0 0 1 1.5 1.5v10a1.5 1.5 0 0 1-1.5 1.5H3zm5-3.08a1.5 1.5 0 0 0 1.25-.65l.05-.08V8.22l-.12.06a1.8 1.8 0 0 1-.95.3c-.45 0-.7-.2-.7-.57 0-.35.2-.5.8-.66.8-.23 1.5-.55 1.5-1.45 0-.8-.67-1.37-1.5-.18v-1.1h-.7v1.1a1.5 1.5 0 0 0-1.1.6l-.05.07v2.4l.1.05a1.8 1.8 0 0 0 .85.2c.45 0 .7.2.7.58 0 .35-.2.5-.8.67-.8.23-1.5.55-1.5 1.44 0 .8.67 1.38 1.52.18v1.1h.7v-1.1z"/>
+              </svg>
+            </span>
+          <% end %>
+          <% if payment_icons.include?(:paypal) %>
+            <span class="payment-icon-wrapper" title="PayPal">
+              <svg class="payment-icon-svg" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M10.8 4.2c-.2-1.2-1.2-2.2-2.7-2.2H3.2c-.4 0-.7.3-.8.7L1 13.5c-.1.4.2.7.6.7h2.7l.8-5h.1c1.5 0 2.8-.6 3.2-2.3.4-1.8.2-2.7-1.6-2.7h-2L7.2 7.7h2c.8 0 1.2-.4 1.4-1.1.2-1 .1-1.8-.8-1.8h-1.6l.6-3.8h.4l.2.2c1.2 0 2 .7 1.8 2.2z"/>
+              </svg>
+            </span>
+          <% end %>
+          <% if payment_icons.include?(:venmo) %>
+            <span class="payment-icon-wrapper" title="Venmo">
+              <svg class="payment-icon-svg" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M12.9 2.5L7.9 14H3.1L0.6 2.5h3.6l1.2 7.6 3.9-7.6h3.6z"/>
+              </svg>
+            </span>
+          <% end %>
+          <% if payment_icons.include?(:zelle) %>
+            <span class="payment-icon-wrapper" title="Zelle">
+              <svg class="payment-icon-svg" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M2.5 2h11v2.5H6.8l6.7 7H2.5V9h6.7l-6.7-7z"/>
+              </svg>
+            </span>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <strong>Price cents:</strong>
-    <%= game.price_cents %>
-  </div>
-
-</div>
+<% end %>

@@ -1,16 +1,92 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, "Premium Board Games Marketplace | Turnip Cake" %>
+<% content_for :description, "Browse, bid on, and list premium tabletop board games in the Turnip Cake marketplace. Discover hot deals and rare games." %>
 
-<% content_for :title, "Games" %>
+<div class="games-page-wrapper">
+  <%= render "ambient_glows" %>
 
-<h1>Games</h1>
+  <!-- Main Browse Section -->
+  <main class="browse-section">
+    <div class="container-custom">
+      <header class="games-header">
+        <div class="header-info">
+          <h1 class="page-title">Board Games</h1>
+          <p class="page-subtitle">Browse and bid on premium tabletop games in our marketplace</p>
+        </div>
 
-<div id="games">
-  <% @games.each do |game| %>
-    <%= render game %>
-    <p>
-      <%= link_to "Show this game", game %>
-    </p>
-  <% end %>
+      </header>
+
+      <% if notice.present? %>
+        <div class="alert-custom" role="alert">
+          <i class="bi bi-check-circle-fill"></i>
+          <span><%= notice %></span>
+        </div>
+      <% end %>
+
+      <!-- Cards Grid -->
+      <div class="games-grid">
+        <% @games.each do |game| %>
+          <%= render game %>
+        <% end %>
+      </div>
+
+      <!-- Pagination Component -->
+      <% if @total_pages > 1 %>
+        <nav class="pagination-section" aria-label="Games pagination">
+          <div class="pagination-container">
+            <!-- CaretDoubleLeft -->
+            <% if @page > 1 %>
+              <%= link_to games_path(page: @page - 1), class: "pagination-arrow", aria: { label: "Previous Page" } do %>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17 17L12 12L17 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M11 17L6 12L11 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              <% end %>
+            <% else %>
+              <span class="pagination-arrow disabled" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17 17L12 12L17 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M11 17L6 12L11 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            <% end %>
+
+            <!-- Numbers -->
+            <div class="pagination-numbers">
+              <% (1..@total_pages).each do |p| %>
+                <% if p == @page %>
+                  <span class="page-number active" aria-current="page"><%= p %></span>
+                <% else %>
+                  <%= link_to p, games_path(page: p), class: "page-number" %>
+                <% end %>
+              <% end %>
+
+              <!-- Visual filler page numbers to match the 10-page Figma pagination design -->
+              <% ((@total_pages + 1)..10).each do |p| %>
+                <span class="page-number filler"><%= p %></span>
+              <% end %>
+            </div>
+
+            <!-- CaretDoubleRight -->
+            <% if @page < @total_pages %>
+              <%= link_to games_path(page: @page + 1), class: "pagination-arrow", aria: { label: "Next Page" } do %>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 7L12 12L7 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M13 7L18 12L13 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              <% end %>
+            <% else %>
+              <span class="pagination-arrow disabled" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 7L12 12L7 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M13 7L18 12L13 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            <% end %>
+          </div>
+        </nav>
+      <% end %>
+    </div>
+  </main>
+
+  <%= render "footer" %>
 </div>
-
-<%= link_to "New game", new_game_path %>
