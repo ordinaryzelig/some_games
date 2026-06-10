@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Catan
   condition: 1
-  price_cents: 1
+  price_cents: 3499
 
 two:
-  name: MyString
-  condition: 1
-  price_cents: 1
+  name: Azul
+  condition: 3
+  price_cents: 1999

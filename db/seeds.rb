@@ -49,3 +49,10 @@ board_games = [
 ]
 
 Game.insert_all(board_games)
+
+Game.find_each do |game|
+  image_path = Rails.root.join("app/assets/images/board_game_images", "#{game.name}.jpg")
+  if File.exist?(image_path) && !game.cover.attached?
+    game.cover.attach(io: File.open(image_path), filename: "#{game.name}.jpg")
+  end
+end

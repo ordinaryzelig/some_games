@@ -1,10 +1,35 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, @game.name %>
 
-<%= render @game %>
+<div class="games-page">
+  <div class="games-page__inner games-page__inner--narrow">
+    <% if notice.present? %>
+      <p class="alert alert-success" role="alert"><%= notice %></p>
+    <% end %>
 
-<div>
-  <%= link_to "Edit this game", edit_game_path(@game) %> |
-  <%= link_to "Back to games", games_path %>
+    <article class="card game-show">
+      <div class="game-show__media">
+        <% if @game.cover.attached? %>
+          <%= image_tag @game.cover, class: "card-img-top", alt: @game.name, onerror: "this.onerror=null;this.src='#{image_path('game-bg.png')}';" %>
+        <% else %>
+          <%= image_tag "board_game_images/#{@game.name}.jpg", class: "card-img-top", alt: @game.name, onerror: "this.onerror=null;this.src='#{image_path('game-bg.png')}';" %>
+        <% end %>
+      </div>
 
-  <%= button_to "Destroy this game", @game, method: :delete %>
+      <div class="card-body game-show__body">
+        <% if @game.condition %>
+          <span class="game-card__badge"><%= @game.condition.titleize %></span>
+        <% end %>
+
+        <h1 class="game-show__title"><%= @game.name %></h1>
+        <p class="game-show__price"><%= number_to_currency @game.price %></p>
+
+        <div class="game-show__actions">
+          <%= link_to "Edit", edit_game_path(@game), class: "btn btn-primary" %>
+          <%= link_to "Back to games", games_path, class: "btn btn-ghost-dark" %>
+          <%= button_to "Destroy", @game, method: :delete, class: "btn btn-danger",
+                form: { data: { turbo_confirm: "Are you sure you want to delete this game?" } } %>
+        </div>
+      </div>
+    </article>
+  </div>
 </div>

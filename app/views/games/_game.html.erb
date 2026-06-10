@@ -1,19 +1,36 @@
-<div id="<%= dom_id game %>">
-  <%= image_tag "board_game_images/#{game.name}.jpg" %>
+<div class="col">
+  <%= link_to game, id: dom_id(game), class: "card game-card h-100" do %>
+    <div class="game-card__media">
+      <% if game.cover.attached? %>
+        <%= image_tag game.cover, class: "card-img-top", alt: game.name, loading: "lazy", onerror: "this.onerror=null;this.src='#{image_path('game-bg.png')}';" %>
+      <% else %>
+        <%= image_tag "board_game_images/#{game.name}.jpg", class: "card-img-top", alt: game.name, loading: "lazy", onerror: "this.onerror=null;this.src='#{image_path('game-bg.png')}';" %>
+      <% end %>
+    </div>
 
-  <div>
-    <strong>Name:</strong>
-    <%= game.name %>
-  </div>
+    <div class="card-body game-card__details">
+      <h2 class="game-card__title"><%= game.name %></h2>
 
-  <div>
-    <strong>Condition:</strong>
-    <%= game.condition %>
-  </div>
+      <div class="game-card__meta">
+        <% if game.condition %>
+          <span class="game-card__badge"><%= game.condition.titleize %></span>
+        <% end %>
 
-  <div>
-    <strong>Price cents:</strong>
-    <%= game.price_cents %>
-  </div>
+        <p class="game-card__price"><%= number_to_currency game.price %></p>
 
+        <p class="game-bids_data">2 bids</p>
+
+        <div class="game-card__accepts">
+          <span class="game-card__accepts-label">Accepts:</span>
+          <span class="game-card__pay-icons">
+            <%= image_tag "payment/bi_cash.svg", alt: "Cash", class: "game-card__pay-icon" %>
+            <%= image_tag "payment/simple-icons_cashapp.svg", alt: "Cash App", class: "game-card__pay-icon" %>
+            <%= image_tag "payment/ic_baseline-paypal.svg", alt: "PayPal", class: "game-card__pay-icon" %>
+            <%= image_tag "payment/bxl_venmo.svg", alt: "Venmo", class: "game-card__pay-icon" %>
+            <%= image_tag "payment/simple-icons_zelle.svg", alt: "Zelle", class: "game-card__pay-icon" %>
+          </span>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

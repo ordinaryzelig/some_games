@@ -1,12 +1,15 @@
 <% content_for :title, "Editing game" %>
 
-<h1>Editing game</h1>
+<div class="games-page">
+  <div class="games-page__inner games-page__inner--narrow">
+    <header class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+      <h1 class="page-head__title">Editing game</h1>
+      <div class="d-flex gap-2">
+        <%= link_to "Show", @game, class: "btn btn-ghost" %>
+        <%= link_to "Back to games", games_path, class: "btn btn-ghost" %>
+      </div>
+    </header>
 
-<%= render "form", game: @game %>
-
-<br>
-
-<div>
-  <%= link_to "Show this game", @game %> |
-  <%= link_to "Back to games", games_path %>
+    <%= render "form", game: @game %>
+  </div>
 </div>

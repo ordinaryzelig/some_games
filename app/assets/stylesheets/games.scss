@@ -1,0 +1,391 @@
+// -- Palette (from Figma) ---------------------------------------------------
+$card-bg: #160d27; // card + footer background
+$title: #f4f6fa; // game title / footer text
+$price: #ededf1; // price
+$muted: #b5b6c4; // badge + payment icons
+$muted-blue: #b9c1d6; // "Accepts:" label
+$accent: #b080ff; // accent (bids / focus)
+$social: #9556ff; // footer social icons
+$ink-dark: #1b1330; // dark text on the pastel page background
+
+$btn-gradient: linear-gradient(208deg, #9759ff 0%, #7b2dff 31%, #2c1a4d 75%, #160d27 100%);
+$content-width: 1320px;
+
+// -- Page -------------------------------------------------------------------
+.games-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+  background: #F4F6FA url("game-bg.png");
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+.games-page__inner {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: $content-width;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem); // Figma: 80px top/bottom
+}
+
+.games-page__inner--narrow {
+  max-width: 760px;
+}
+
+// Bootstrap .row supplies the 4-col grid (gx-3 = 16px columns); this keeps
+// Figma's 32px row gap.
+.games-grid {
+  --bs-gutter-y: 2rem;
+}
+
+// -- Card skin (on Bootstrap .card) -----------------------------------------
+.game-card {
+  overflow: hidden;
+  border-radius: 16px; // Figma: Radius/radius-lg
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 50px rgba(22, 13, 39, 0.35);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $accent;
+    outline-offset: 3px;
+  }
+}
+
+.game-card__media {
+  aspect-ratio: 318 / 323; // Figma "Game Image" 318x323
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// "Game Details": 32px padding, title at top, price block at bottom.
+.game-card__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 100px;
+  padding: 32px;
+}
+
+.game-card__title {
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  font-size: 2rem; // 32px
+  line-height: 1.1875; // 38 / 32
+  color: $title;
+}
+
+.game-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.game-card__badge {
+  align-self: flex-start;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem; // 14px
+  line-height: 1.21;
+  color: $muted;
+}
+
+.game-card__price {
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem; // 24px
+  line-height: 1.1667; // 28 / 24
+  color: $price;
+}
+
+.game-bids_data {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.75rem; // 12px
+  color: $accent;
+}
+
+.game-card__accepts {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.game-card__accepts-label {
+  font-family: "Roboto", sans-serif;
+  font-weight: 1000;
+  font-size: 0.75rem; // 12px
+  color: $muted-blue;
+}
+
+.game-card__pay-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.game-card__pay-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+// -- Custom button skins (on Bootstrap .btn) --------------------------------
+
+// Ghost on the pastel page (new/edit headers).
+.btn-ghost {
+  background: rgba(22, 13, 39, 0.06);
+  color: $ink-dark;
+
+  &:hover,
+  &:focus {
+    background: rgba(22, 13, 39, 0.12);
+    color: $ink-dark;
+  }
+}
+
+// Ghost on a dark surface (show card).
+.btn-ghost-dark {
+  background: rgba(255, 255, 255, 0.08);
+  color: $title;
+
+  &:hover,
+  &:focus {
+    background: rgba(255, 255, 255, 0.16);
+    color: $title;
+  }
+}
+
+// -- Sub-page chrome --------------------------------------------------------
+.page-head__title {
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  font-size: 1.75rem;
+  color: $ink-dark;
+}
+
+// Form card (on Bootstrap .card; fields use .form-control/.form-select).
+.game-form {
+  padding: 2rem;
+}
+
+// Detail view (on Bootstrap .card).
+.game-show {
+  overflow: hidden;
+}
+
+.game-show__media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.game-show__body {
+  padding: 2rem;
+}
+
+.game-show__title {
+  margin: 0.5rem 0 0.75rem;
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  color: $title;
+}
+
+.game-show__price {
+  margin: 0 0 1.5rem;
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: $price;
+}
+
+.game-show__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+// -- Footer (node 1:1854) ---------------------------------------------------
+// Figma: 1920x517, vertical layout, center-aligned, gap 48px, padding 32px top/bottom
+.site-footer {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding: 32px clamp(1.25rem, 4vw, 4rem);
+  background: #160D27;
+  color: $title;
+  margin-top: 115px;
+}
+
+// Figma: container 1320x257, holds Nav-menu/Footer B instance
+// Nav-menu is horizontal, gap 272px, with brand | cube | nav-links
+.site-footer__main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: $content-width;
+
+  @media (max-width: 760px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 2.5rem;
+  }
+}
+
+// Figma: Frame 79 (brand), 272x31, horizontal
+.site-footer__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: $title;
+  text-decoration: none;
+
+  &:hover {
+    color: $title;
+  }
+}
+
+// Figma: logo SVG sizing
+.site-footer__brand-icon {
+  height: 31px;
+  width: auto;
+}
+
+// Figma: brand text next to logo
+.site-footer__brand-name {
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: $title;
+}
+
+// Figma: Menu (nav links), 272x15, horizontal, gap 32px
+.site-footer__links {
+  display: flex;
+  gap: 32px;
+
+  a {
+    font-family: "Inter", sans-serif;
+    font-size: 0.75rem; // 12px
+    font-weight: 400;
+    color: $title;
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity 0.15s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 760px) {
+    justify-self: center;
+  }
+}
+
+// Figma: button 209x50, BUTTON GRADIENT, radius 8px, padding 16/24, Inter/16/600, gap 8px
+.btn-events {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+  border: 0;
+  border-radius: 8px;
+  background: $btn-gradient;
+  color: $title;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: transform 0.15s ease, filter 0.15s ease;
+
+  &:hover,
+  &:focus {
+    color: $title;
+    filter: brightness(1.08);
+    transform: translateY(-2px);
+  }
+}
+
+// Figma: SOCIAL MEDIA ICONS instance 181x50, horizontal, gap 15px
+.site-footer__social {
+  display: flex;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+// Figma: each icon frame is 50x50, fill #ffffff (white circle)
+.site-footer__social-link {
+  text-decoration: none;
+  transition: transform 0.15s ease, filter 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.15);
+  }
+}
+
+// Figma: icon vectors fill #9556ff, roughly 40x40 inside the 50x50 frame
+.site-footer__social-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.site-footer-bottom {
+  position: relative;
+  top: -115px;
+  margin-bottom: -115px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  @media (max-width: 760px) {
+    margin-bottom: 0;
+    top: 0;
+  }
+}
+
+// Figma: Frame 78 (cube centerpiece), 243x298
+.footer-cube {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-cube__image {
+  width: 243px;
+  height: auto;
+  max-height: 298px;
+  object-fit: contain;
+}
