@@ -1,0 +1,17 @@
+<% social_links = [
+    { label: "Facebook", href: "#",  icon: "icon-facebook", width: 50 },
+    { label: "Instagram", href: "#", icon: "icon-instagram", width: 51 },
+    { label: "X", href: "#",  icon: "icon-x", width: 50 }
+] %>
+
+<ul class="social d-flex align-items-center justify-content-center list-unstyled mb-0" aria-label="Social">
+    <% social_links.each_with_index do |link, i| %>
+    <li class="social-item <%= 'me-3' unless i == social_links.length - 1 %>">
+        <a href="<%= link[:href] %>" class="social-link d-inline-flex focus-ring rounded" aria-label="<%= link[:label] %>">
+        <svg width="<%= link[:width] %>" height="50" aria-hidden="true" focusable="false">
+            <use href="#<%= link[:icon] %>"/>
+        </svg>
+        </a>
+    </li>
+    <% end %>
+</ul>

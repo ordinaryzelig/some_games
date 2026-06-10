@@ -1,0 +1,23 @@
+.btn-gradient {
+  color: $gray-100;
+  background: linear-gradient(
+    205.32deg,
+    rgba(151, 89, 255, 0.5) 14.96%,
+    rgba(123, 45, 255, 0.5) 41.35%,
+    rgba(44, 26, 77, 0.5) 79.7%,
+    rgba(22, 13, 39, 0.5) 101.02%
+  );
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $gray-100;
+    background: linear-gradient(
+      205.32deg,
+      rgba(151, 89, 255, 0.7) 14.96%,
+      rgba(123, 45, 255, 0.7) 41.35%,
+      rgba(44, 26, 77, 0.7) 79.7%,
+      rgba(22, 13, 39, 0.7) 101.02%
+    );
+  }
+}

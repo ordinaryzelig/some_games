@@ -1,0 +1,2 @@
+default_build_path: app/assets/builds/application.css
+source_path: app/assets/stylesheets/application.bootstrap.scss

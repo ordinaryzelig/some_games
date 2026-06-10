@@ -1,16 +1,20 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Games" %>
 
-<h1>Games</h1>
-
-<div id="games">
-  <% @games.each do |game| %>
-    <%= render game %>
-    <p>
-      <%= link_to "Show this game", game %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New game", new_game_path %>
+<div id="games" class="position-relative">
+  <div class="container-xl">
+    <h1 class="fw-600 my-4">
+      Games
+    </h1>
+    <div class="row g-3" id="games-list">
+      <% @games.each do |game| %>
+        <%= render game %>
+      <% end %>
+    </div>
+    <div id="games-more" class="d-flex justify-content-center mx-auto mt-4">
+      <% if @pagy.next %>
+        <%= link_to "Load More", games_path(page: @pagy.next), data: { turbo_stream: true }, class: "btn btn-dark border-0 w-100 py-3 px-4 fs-6" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="games-bg position-absolute top-0 start-0 h-100 w-100 d-none d-xl-block pe-none"></div>  
+</div>  
