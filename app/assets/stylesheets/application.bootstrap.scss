@@ -1,4 +1,130 @@
-@import 'bootstrap/scss/bootstrap';
-@import 'bootstrap-icons/font/bootstrap-icons';
+// 1. Import base functions and variables
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
 
-@import 'games'
+// --- BOOTSTRAP OVERRIDES ---
+// Global Layout Settings
+$border-radius:          0.5rem; 
+
+// Override Bootstrap's global typography
+$font-family-sans-serif: "Inter", sans-serif;
+$font-family-roboto:     "Roboto", sans-serif;
+$headings-font-family:   "Rubik", sans-serif;
+
+// Override Bootstrap's functional colors and gray scale using native naming convention
+$gray-100: #F4F6FA;
+$light:    $gray-100;
+$dark:     #160D27;
+
+// Update maps with native keys to keep the core clean and seamless
+$grays: map-merge(
+  $grays,
+  (
+    "100": $gray-100
+  )
+);
+
+$theme-colors: map-merge(
+  $theme-colors,
+  (
+    "light": $light,
+    "dark":  $dark
+  )
+);
+// ----------------------------------------
+
+// 2. Step 1: Properly change container widths
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1344px 
+);
+
+// 3. Step 2: Add step "6" (32px) to the global Bootstrap spacers map
+$spacers: map-merge(
+  $spacers,
+  (
+    6: 2rem // 2rem = 32px
+  )
+);
+
+// 4. Import the rest of the Bootstrap core
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+// New: Add custom font weights and utilities before building the API
+$utilities: map-merge(
+  $utilities,
+  (
+    "font-family": map-merge(
+      map-get($utilities, "font-family"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "font-family"), "values"),
+          (
+            "roboto": $font-family-roboto // Generates .font-roboto class
+          )
+        )
+      )
+    ),
+    "font-size": map-merge(
+      map-get($utilities, "font-size"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "font-size"), "values"),
+          (
+            7: 0.875rem,  // 14px
+            8: 0.75rem  // 12px            
+          )
+        )
+      )
+    ),
+    "font-weight": map-merge(
+      map-get($utilities, "font-weight"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "font-weight"), "values"),
+          (
+            // Adds standard numeric utility classes (.fw-400, .fw-500, etc.)
+            400: 400,
+            500: 500,
+            600: 600,
+            700: 700,
+            800: 800,            
+            // Pro-tip: you can also map it to a semantic name like .fw-extrabold
+            "extrabold": 800 
+          )
+        )
+      )
+    ),
+    "height": map-merge(
+      map-get($utilities, "height"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "height"), "values"),
+          (
+            16: 1rem
+          )
+        )
+      )
+    )
+  )
+);
+
+// 5. Required: Compile the utilities API (our h-16 will be included now)
+@import "bootstrap/scss/utilities/api";
+
+// 6. Include full compiled Bootstrap and icons
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons";
+
+// 7. Your custom component files
+@import "components/social.scss";
+@import "components/btn-gradient.scss";
+@import "games";
+@import "footer";
+
+// 8. Custom project styles

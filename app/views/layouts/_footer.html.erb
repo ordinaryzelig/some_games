@@ -1,0 +1,32 @@
+<footer class="footer bg-dark mt-auto">
+  <div class="container-xl pb-4">
+    <%= image_tag "footer/cube.png", class: "footer-cube d-block mx-auto", alt: "Cube", loading: "lazy" %>
+
+    <div class="d-flex flex-column flex-sm-row align-items-center justify-content-sm-between">
+      <a href="#" class="footer-logo">
+        <%= image_tag "footer/logo.png", class: "footer-logo d-block position-relative", alt: "Turnip Cake", loading: "lazy" %>
+      </a>
+
+      <% menu_items = [
+        { label: "About", href: "#" },
+        { label: "Support", href: "#" },
+        { label: "Privacy Policy", href: "#" }
+      ] %>
+
+      <ul class="footer-menu fs-8 d-flex gap-4 list-unstyled my-2 my-sm-0">
+        <% menu_items.each_with_index do |item, i| %>
+          <li class="footer-item <%= 'me-3' unless i == menu_items.length - 1 %>">
+            <a href="<%= item[:href] %>" class="footer-link text-decoration-none"><%= item[:label] %></a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-center mt-4 mt-sm-0 mb-5">
+      <button type="button" class="btn btn-gradient border-0 py-3 px-4 fs-6">Find events near you</button>
+    </div>
+
+    <%= render "layouts/components/social" %>
+
+  </div>
+</footer>

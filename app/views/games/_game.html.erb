@@ -1,19 +1,30 @@
-<div id="<%= dom_id game %>">
-  <%= image_tag "board_game_images/#{game.name}.jpg" %>
-
-  <div>
-    <strong>Name:</strong>
-    <%= game.name %>
+<div class="card-col col-sm-6 col-md-4 col-lg-3 mb-0 mb-xl-3">
+  <div class="card bg-dark border-0 h-100 overflow-hidden" id="<%= dom_id game %>">
+    <div class="card-head bg-secondary">
+      <%= tag.img class: "card-img-top object-fit-cover",
+          src: asset_path("board_game_images/#{game.name}.jpg"),
+          loading: "lazy",
+          alt: game.name %>
+    </div>
+    <div class="card-body d-flex flex-column p-6">
+      <h2 class="card-title fs-2 fw-600"><%= game.name %></h2>
+      <div class="card-content mt-auto">
+        <div class="card-status fs-7 fw-600 text-capitalize mt-4 mb-2"><%= game.condition %></div>
+        <h3 class="card-price fs-4 fw-500 mb-1"><%= number_to_currency(game.price_cents / 100.0) %></h3>
+        <p class="card-text fs-8 font-roboto mt-0 mb-1">2 bids</p>
+        <div class="card-accepts d-flex align-items-center">
+          <span class="card-accepts-title fs-8 font-roboto fw-800 me-2">Accepts:</span>
+          <ul class="card-cash-icons d-flex align-items-center list-unstyled mb-0 gap-2 h-16">
+            <% %w[cash cash-app paypal venmo zelle].each do |icon| %>
+              <li class="d-flex align-items-center">
+                <svg width="16" height="16" aria-label="<%= icon.titleize %>">
+                  <use href="#icon-<%= icon %>"/>
+                </svg>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <strong>Condition:</strong>
-    <%= game.condition %>
-  </div>
-
-  <div>
-    <strong>Price cents:</strong>
-    <%= game.price_cents %>
-  </div>
-
 </div>

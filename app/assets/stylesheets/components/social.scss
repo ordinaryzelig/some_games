@@ -1,0 +1,12 @@
+.social {
+    &-link {
+        will-change: opacity;
+        transition: opacity .3s ease;
+
+        &:hover,
+        &:focus,
+        &:active {
+            opacity: .8;
+        }
+    }
+}

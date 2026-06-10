@@ -1,0 +1,32 @@
+.footer {
+    color: $gray-100;
+
+    &-cube {
+        max-width: 15.188rem;
+        margin-top: -4.5rem;
+        margin-bottom: -1.5rem;
+    }
+
+    &-logo {
+        max-height: 1.938rem;
+        top: -.25rem;
+    }
+
+    &-link {    
+        color: $gray-100;
+        will-change: opacity;
+        transition: opacity .3s ease;
+
+        &:hover,
+        &:focus,
+        &:active {
+            opacity: .8;
+        }
+    }  
+
+    @media (max-width: 767px) {
+        &-cube {
+            max-width: 12rem;
+        }
+    }
+}

@@ -1,0 +1,61 @@
+#games {
+    .container-xl {
+        padding-top: 2rem;
+        padding-bottom: 6rem;
+    }
+
+    .card {
+        color: $gray-100;
+
+        &-img-top {
+            aspect-ratio: 4 / 3;
+        }
+
+        &-title {
+            color: $gray-100;
+        }
+
+        &-status {
+            color: #B5B6C4;
+        }
+
+        &-price {
+            color: #EDEDF1;
+        }
+
+        &-text {
+            color: #B080FF;            
+        }
+
+        &-accepts-title {
+            color: #B9C1D6; 
+        }    
+
+        &-body {
+            min-height: 18.75rem;
+        }
+
+        @media (min-width: 1201px) {
+            &-body {
+                min-height: 30.938rem;
+            }
+        }
+
+        @media (min-width: 577px) {
+            &-img-top {
+                aspect-ratio: 323 / 318;
+            }
+        }
+    }   
+
+    .games-bg {
+        background-attachment: fixed;
+        background-position: center top;
+        background-image: url("games/bg.png");
+        background-size: cover;
+    }
+}
+
+#games-more {
+    max-width: 12.75rem;
+}
