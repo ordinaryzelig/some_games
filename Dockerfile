@@ -45,11 +45,11 @@ RUN bundle install && \
 # Copy application code
 COPY . .
 
+RUN yarn install --frozen-lockfile
+
 # Precompile bootsnap code for faster boot times.
 # -j 1 disable parallel compilation to avoid a QEMU bug: https://github.com/rails/bootsnap/issues/495
 RUN bundle exec bootsnap precompile -j 1 app/ lib/
-
-RUN yarn install --frozen-lockfile
 
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
