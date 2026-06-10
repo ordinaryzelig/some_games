@@ -1,0 +1,37 @@
+<%# Site footer. Links are placeholders (href="#") per the brief — they don't
+    need destinations. Social marks use Bootstrap Icons (already bundled). %>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__top">
+      <%= image_tag "turnip-cake-logo.svg", alt: "Turnip Cake", class: "site-footer__logo" %>
+
+      <%= image_tag "cube.webp", alt: "", aria: { hidden: true }, class: "site-footer__cube" %>
+
+      <nav class="site-footer__nav" aria-label="Footer">
+        <%= link_to "About", "#" %>
+        <%= link_to "Support", "#" %>
+        <%= link_to "Privacy Policy", "#" %>
+      </nav>
+    </div>
+
+    <%= link_to "Find events near you", "#", class: "site-footer__cta" %>
+
+    <ul class="site-footer__social list-unstyled">
+      <li>
+        <%= link_to "#", aria: { label: "Facebook" } do %>
+          <i class="bi bi-facebook" aria-hidden="true"></i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to "#", aria: { label: "Instagram" } do %>
+          <i class="bi bi-instagram" aria-hidden="true"></i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to "#", aria: { label: "X" } do %>
+          <i class="bi bi-twitter-x" aria-hidden="true"></i>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</footer>
