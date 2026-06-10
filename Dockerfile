@@ -24,7 +24,7 @@ RUN apt-get update -qq && \
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development" \
+    BUNDLE_WITHOUT="" \
     LD_PRELOAD="/usr/local/lib/libjemalloc.so"
 
 # Throw-away build stage to reduce size of final image
@@ -40,9 +40,9 @@ RUN apt-get update -qq && \
 COPY vendor/* ./vendor/
 COPY Gemfile Gemfile.lock ./
 
-RUN bundle install && \
+RUN bundle config set --local without '' && \
+    bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
-    # -j 1 disable parallel compilation to avoid a QEMU bug: https://github.com/rails/bootsnap/issues/495
     bundle exec bootsnap precompile -j 1 --gemfile
 
 # Copy application code
