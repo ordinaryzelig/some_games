@@ -1,16 +1,21 @@
-<p style="color: green"><%= notice %></p>
+<%= render partial: 'gradient_ring_background' %>
 
-<% content_for :title, "Games" %>
+<main>
+  <p style="color: green"><%= notice %></p>
 
-<h1>Games</h1>
+  <% content_for :title, "Games" %>
 
-<div id="games">
-  <% @games.each do |game| %>
-    <%= render game %>
-    <p>
-      <%= link_to "Show this game", game %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New game", new_game_path %>
+  <div id="games">
+    <div class="container-lg">
+      <div class="row row-cols-auto justify-content-center gx-3 gy-4">
+        <% @games.each do |game| %>
+          <div class="col">
+            <%= link_to game, class: 'text-decoration-none text-reset' do %>
+              <%= render game, payment_methods: @payment_methods %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>

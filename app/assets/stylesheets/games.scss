@@ -1,0 +1,92 @@
+@import "./gradient_ring_background";
+
+$card-width: 14em;
+
+html,
+body {
+  background-color: $theme-white;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  z-index: 1; // render main content on top of the gradient ring background
+  position: relative; // required for z-indexing
+  background: transparent;
+}
+
+@mixin grid-background(
+  $background-color: transparent,
+  $line-color: rgba(128, 128, 128, 0.15),
+  $size: 20px
+) {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      $line-color 0px,
+      $line-color 1px,
+      transparent 1px,
+      transparent $size
+    ),
+    repeating-linear-gradient(
+      90deg,
+      $line-color 0px,
+      $line-color 1px,
+      transparent 1px,
+      transparent $size
+    ),
+    $background-color;
+}
+
+.game-card {
+  width: $card-width;
+  height: $card-width * 2.5;
+
+  // modify bootstrap classes
+
+  .card-img-top {
+    width: $card-width;
+    height: $card-width;
+    @include grid-background($theme-dark);
+  }
+
+  .card-body {
+    background-color: $theme-dark;
+    color: $theme-white;
+  }
+
+  .card-text {
+    line-height: 1.7;
+  }
+
+  .card-title {
+    font-family: $font-primary;
+  }
+
+  .game-condition {
+    font-family: $font-secondary;
+    font-size: 0.7rem;
+    color: $theme-gray;
+  }
+
+  .game-price {
+    font-family: $font-primary;
+  }
+
+  .game-bids {
+    font-family: $font-body;
+    font-size: 0.6rem;
+    color: $theme-primary-light;
+  }
+
+  .game-accepted-payments {
+    font-family: $font-body;
+    font-size: 0.6rem;
+    color: $theme-gray;
+
+    img {
+      height: 1em;
+      width: 1em;
+    }
+  }
+}

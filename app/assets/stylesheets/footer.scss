@@ -1,0 +1,55 @@
+.site-footer {
+  $figure-width: 8rem;
+  $figure-offset: $figure-width / 2;
+
+  margin-top: $figure-offset * 2;
+  background-color: $theme-dark;
+  color: $theme-white;
+  position: relative;
+
+  .offset-figure {
+    position: relative;
+    top: $figure-offset * -1;
+    display: block;
+    text-align: center;
+    margin-bottom: ($figure-offset * -1) - 2rem;
+  }
+
+  .logo-glass {
+    width: $figure-width;
+    height: auto;
+  }
+
+  .footer-nav-brand {
+    color: $theme-white;
+    svg {
+      height: 24px;
+    }
+  }
+
+  .footer-nav-menu {
+    font-size: 0.8rem;
+    font-family: $font-secondary;
+    color: $theme-gray;
+  }
+
+  .footer-action-btn {
+    font-family: $font-secondary;
+    font-size: 0.8rem;
+    padding: 1em 2em;
+    background: linear-gradient(
+      205.32deg,
+      rgba(151, 89, 255, 0.5) 14.96%,
+      rgba(123, 45, 255, 0.5) 41.35%,
+      rgba(44, 26, 77, 0.5) 79.7%,
+      rgba(22, 13, 39, 0.5) 101.02%
+    );
+  }
+
+  .footer-social-link {
+    color: $theme-primary;
+    svg {
+      height: 2.5rem;
+    }
+  }
+}

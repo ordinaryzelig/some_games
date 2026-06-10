@@ -1,0 +1,58 @@
+.gradient-ring-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  max-width: 100vw;
+  min-height: 100vh;
+  max-height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+
+  img {
+    $base-size: 50vh;
+    pointer-events: none;
+    position: absolute;
+    height: $base-size;
+    opacity: 0.35;
+    object-fit: fill;
+    transform-origin: center center;
+
+    &:nth-of-type(1) {
+      $h: $base-size * 1.2;
+      $w: $h * 0.837;
+      height: $h;
+      width: $w;
+      top: 0;
+      left: $w * -0.6;
+      transform: rotate(164.55deg);
+    }
+    &:nth-of-type(2) {
+      $h: $base-size * 1.7;
+      $w: $h * 0.608;
+      height: $h;
+      width: $w;
+      top: 66vh;
+      left: $w * -0.5;
+      transform: rotate(32.13deg);
+    }
+    &:nth-of-type(3) {
+      $h: $base-size * 1.2;
+      $w: $h * 0.837;
+      height: $h;
+      width: $w;
+      top: 45vh - ($h / 2);
+      right: $w / -2.2;
+      transform: rotate(-199.55deg);
+    }
+    &:nth-of-type(4) {
+      $h: $base-size * 1.5;
+      $w: $h * 0.837;
+      height: $h;
+      width: $w;
+      bottom: $h * -0.68;
+      right: $w * -0.6;
+      transform: rotate(31.2deg);
+    }
+  }
+}

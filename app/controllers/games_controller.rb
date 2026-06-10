@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, only: %i[ show edit update destroy ]
+  before_action :use_payment_methods
 
   # GET /games or /games.json
   def index
@@ -66,5 +67,9 @@ class GamesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def game_params
       params.expect(game: [ :name, :condition, :price_cents ])
+    end
+
+    def use_payment_methods
+      @payment_methods = %w(cash cashapp paypal venmo zelle)
     end
 end

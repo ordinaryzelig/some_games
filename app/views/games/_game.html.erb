@@ -1,19 +1,25 @@
-<div id="<%= dom_id game %>">
-  <%= image_tag "board_game_images/#{game.name}.jpg" %>
+<%# locals: (game: nil, payment_methods: []) %>
 
-  <div>
-    <strong>Name:</strong>
-    <%= game.name %>
+<div id="<%= dom_id game %>" class="card game-card border-0 rounded overflow-hidden">
+  <%= image_tag "board_game_images/#{game.name}.jpg", class: 'card-img-top object-fit-contain', alt: game.name %>
+  <div class="card-body p-4 d-flex flex-column justify-content-between">
+    <h5 class="card-title fs-4 fw-semibold"><%= game.name %></h5>
+    <div class="card-text">
+      <p class="game-condition fw-medium mb-0">
+        <%= game.condition.titleize %>
+      </p>
+      <p class="game-price fs-5 fw-medium mb-0">
+        <%= number_to_currency(game.price_cents) %>
+      </p>
+      <p class="game-bids mb-0">2 bids</p>
+      <% if payment_methods %>
+        <p class="game-accepted-payments mb-0">
+          <span>Accepts: </span>
+          <% payment_methods.each do |name| %>
+            <%= image_tag "payment_icons/#{name}.svg", class: 'payment-icon ms-1', alt: name %>
+          <% end %>
+        </p>
+      <% end %>
+    </div>
   </div>
-
-  <div>
-    <strong>Condition:</strong>
-    <%= game.condition %>
-  </div>
-
-  <div>
-    <strong>Price cents:</strong>
-    <%= game.price_cents %>
-  </div>
-
 </div>
