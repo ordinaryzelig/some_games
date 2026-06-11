@@ -1,16 +1,12 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Games" %>
 
-<h1>Games</h1>
+<% if notice.present? %>
+  <p class="flash-notice"><%= notice %></p>
+<% end %>
 
-<div id="games">
-  <% @games.each do |game| %>
-    <%= render game %>
-    <p>
-      <%= link_to "Show this game", game %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New game", new_game_path %>
+<main class="container-xl py-5">
+  <h1 class="visually-hidden">Games</h1>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4" id="games">
+    <%= render @games %>
+  </div>
+</main>
