@@ -1,0 +1,15 @@
+<%#
+  Renders the game image block (blurred backdrop + foreground) with a fallback
+  swatch when the source JPG is missing.
+
+  Locals:
+    game     — the Game record
+    variant  — "card" or "detail" (controls BEM class prefix)
+%>
+<% prefix = "game-#{variant}__image" %>
+<% if game_image_exists?(game) %>
+  <%= image_tag "board_game_images/#{game.name}.jpg", class: "#{prefix}-bg", alt: "" %>
+  <%= image_tag "board_game_images/#{game.name}.jpg", class: "#{prefix}-fg", alt: game.name %>
+<% else %>
+  <div class="<%= prefix %>-fallback"><span><%= game.name %></span></div>
+<% end %>

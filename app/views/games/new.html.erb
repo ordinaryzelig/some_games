@@ -1,11 +1,16 @@
 <% content_for :title, "New game" %>
 
-<h1>New game</h1>
+<div class="game-form-page">
+  <div class="game-form-page__topbar">
+    <%= link_to games_path, class: "game-form-page__back" do %>
+      <span aria-hidden="true">←</span> Back to all games
+    <% end %>
+  </div>
 
-<%= render "form", game: @game %>
+  <div class="game-form-page__card">
+    <h1 class="game-form-page__title">Add a game</h1>
+    <p class="game-form-page__subtitle">Enter the details for the new listing.</p>
 
-<br>
-
-<div>
-  <%= link_to "Back to games", games_path %>
+    <%= render "form", game: @game %>
+  </div>
 </div>

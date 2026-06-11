@@ -1,9 +1,10 @@
-<%= form_with(model: game) do |form| %>
+<%= form_with(model: game, class: "game-form") do |form| %>
   <% if game.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>
-
-      <ul>
+    <div class="game-form__errors" role="alert">
+      <h2 class="game-form__errors-title">
+        <%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:
+      </h2>
+      <ul class="game-form__errors-list">
         <% game.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -11,22 +12,26 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="game-form__field">
+    <%= form.label :name, class: "game-form__label" %>
+    <%= form.text_field :name, class: "game-form__input", placeholder: "e.g. Catan" %>
   </div>
 
-  <div>
-    <%= form.label :condition, style: "display: block" %>
-    <%= form.number_field :condition %>
+  <div class="game-form__field">
+    <%= form.label :condition, class: "game-form__label" %>
+    <%= form.select :condition,
+          Game.conditions.keys.map { |k| [k.to_s.titleize, k] },
+          { prompt: "Select condition" },
+          class: "game-form__input game-form__select" %>
   </div>
 
-  <div>
-    <%= form.label :price_cents, style: "display: block" %>
-    <%= form.number_field :price_cents %>
+  <div class="game-form__field">
+    <%= form.label :price_cents, "Price (cents)", class: "game-form__label" %>
+    <%= form.number_field :price_cents, class: "game-form__input", min: 0, placeholder: "e.g. 3499 for $34.99" %>
+    <p class="game-form__help">Enter the price in cents (e.g. 3499 for $34.99).</p>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="game-form__actions">
+    <%= form.submit class: "game-form__submit" %>
   </div>
 <% end %>

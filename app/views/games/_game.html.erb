@@ -1,19 +1,16 @@
-<div id="<%= dom_id game %>">
-  <%= image_tag "board_game_images/#{game.name}.jpg" %>
-
-  <div>
-    <strong>Name:</strong>
-    <%= game.name %>
+<%= link_to game, id: dom_id(game), class: "game-card", style: "--card-hue: #{game_hue(game)}" do %>
+  <div class="game-card__image">
+    <%= render "games/game_image", game: game, variant: "card" %>
   </div>
 
-  <div>
-    <strong>Condition:</strong>
-    <%= game.condition %>
-  </div>
+  <div class="game-card__body">
+    <h3 class="game-card__title"><%= game.name %></h3>
 
-  <div>
-    <strong>Price cents:</strong>
-    <%= game.price_cents %>
+    <div class="game-card__meta">
+      <span class="game-card__condition"><%= game_condition_label(game) %></span>
+      <div class="game-card__price"><%= game_price(game) %></div>
+      <div class="game-card__bids">2 bids</div>
+      <%= render "games/payment_icons", variant: "card" %>
+    </div>
   </div>
-
-</div>
+<% end %>

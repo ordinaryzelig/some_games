@@ -1,13 +1,23 @@
 class GamesController < ApplicationController
+  RECOMMENDED_COUNT = 4
+  PER_PAGE = 15
+
   before_action :set_game, only: %i[ show edit update destroy ]
 
   # GET /games or /games.json
   def index
-    @games = Game.all
+    @total_pages = (Game.count / PER_PAGE.to_f).ceil
+    @current_page = (params[:page] || 1).to_i.clamp(1, [@total_pages, 1].max)
+    @games = Game.order(:id)
+                 .limit(PER_PAGE)
+                 .offset((@current_page - 1) * PER_PAGE)
   end
 
   # GET /games/1 or /games/1.json
   def show
+    @recommended = Game.where.not(id: @game.id)
+                       .order(Arel.sql("RANDOM()"))
+                       .limit(RECOMMENDED_COUNT)
   end
 
   # GET /games/new

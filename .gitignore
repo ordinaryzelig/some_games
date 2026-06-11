@@ -38,3 +38,10 @@
 !/app/assets/builds/.keep
 
 /node_modules
+
+# Yarn 4 build cache and unmanaged artifacts.
+.yarn/install-state.gz
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.pnp.*

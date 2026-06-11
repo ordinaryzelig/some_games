@@ -1,16 +1,42 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Games" %>
 
-<h1>Games</h1>
+<div class="games-page">
+  <header class="games-page__header">
+    <div class="games-page__heading">
+      <h1 class="games-page__title">Board Games</h1>
+      <p class="games-page__tagline">Bid on hand-picked tabletop games from collectors worldwide</p>
+    </div>
+    <%= link_to new_game_path, class: "games-page__add" do %>
+      <i class="bi bi-plus-lg" aria-hidden="true"></i>
+      <span>Add a game</span>
+    <% end %>
+  </header>
 
-<div id="games">
-  <% @games.each do |game| %>
-    <%= render game %>
-    <p>
-      <%= link_to "Show this game", game %>
-    </p>
+  <div class="games-grid">
+    <%= render @games %>
+  </div>
+
+  <% if @total_pages > 1 %>
+    <nav class="pagination" aria-label="Pagination">
+      <% if @current_page > 1 %>
+        <%= link_to "← Prev", games_path(page: @current_page - 1), class: "pagination__link pagination__link--nav" %>
+      <% else %>
+        <span class="pagination__link pagination__link--nav pagination__link--disabled" aria-hidden="true">← Prev</span>
+      <% end %>
+
+      <% (1..@total_pages).each do |p| %>
+        <% if p == @current_page %>
+          <span class="pagination__link pagination__link--active" aria-current="page"><%= p %></span>
+        <% else %>
+          <%= link_to p, games_path(page: p), class: "pagination__link" %>
+        <% end %>
+      <% end %>
+
+      <% if @current_page < @total_pages %>
+        <%= link_to "Next →", games_path(page: @current_page + 1), class: "pagination__link pagination__link--nav" %>
+      <% else %>
+        <span class="pagination__link pagination__link--nav pagination__link--disabled" aria-hidden="true">Next →</span>
+      <% end %>
+    </nav>
   <% end %>
 </div>
-
-<%= link_to "New game", new_game_path %>

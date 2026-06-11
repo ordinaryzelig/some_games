@@ -7,4 +7,8 @@ class Game < ApplicationRecord
     :as_is     => 4,
   }
 
+  validates :name, presence: true
+  validates :condition, presence: true
+  validates :price_cents, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
 end
