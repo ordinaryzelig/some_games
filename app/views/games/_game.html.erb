@@ -1,19 +1,17 @@
-<div id="<%= dom_id game %>">
-  <%= image_tag "board_game_images/#{game.name}.jpg" %>
-
-  <div>
-    <strong>Name:</strong>
-    <%= game.name %>
-  </div>
-
-  <div>
-    <strong>Condition:</strong>
-    <%= game.condition %>
-  </div>
-
-  <div>
-    <strong>Price cents:</strong>
-    <%= game.price_cents %>
-  </div>
-
+<div class="col" id="<%= dom_id game %>">
+  <article class="game-card h-100 d-flex flex-column">
+    <div class="game-card__media">
+      <%= image_tag "ui/game-image.png", alt: mockup_title(local_assigns[:game_counter]), loading: "lazy" %>
+    </div>
+    <div class="game-card__body d-flex flex-column flex-grow-1">
+      <h3 class="game-card__title"><%= mockup_title(local_assigns[:game_counter]) %></h3>
+      <div class="mt-auto">
+        <p class="game-card__condition"><%= game_condition_label(game) %></p>
+        <p class="game-card__price">$280.99</p>
+        <p class="game-card__bids">2 bids</p>
+        <%= image_tag "ui/accepts-payments.svg", class: "game-card__accepts",
+              alt: "Accepts: card, cash, PayPal, Zelle" %>
+      </div>
+    </div>
+  </article>
 </div>
