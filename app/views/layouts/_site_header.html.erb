@@ -4,7 +4,13 @@
       <%= image_tag "ui/logo-dark.png", alt: "Turnip Cake", class: "brand__logo" %>
     <% end %>
 
-    <nav class="site-nav" aria-label="Primary">
+    <button class="site-nav__toggle" type="button"
+            data-bs-toggle="collapse" data-bs-target="#siteNav"
+            aria-controls="siteNav" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="bi bi-list" aria-hidden="true"></i>
+    </button>
+
+    <nav class="site-nav collapse" id="siteNav" aria-label="Primary">
       <ul class="site-nav__links">
         <li><a href="#">Sell</a></li>
         <li><a href="#">Faqs</a></li>

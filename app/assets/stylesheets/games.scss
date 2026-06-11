@@ -135,6 +135,52 @@ body {
   }
 }
 
+// ---- Mobile hamburger toggle (hidden at lg+, where the nav shows inline) ----
+.site-nav__toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  color: var(--tc-card-bg);
+  font-size: 26px;
+  line-height: 1;
+  padding: 4px 6px;
+  cursor: pointer;
+
+  &:hover { opacity: .6; }
+}
+
+// Below lg: collapse the links + icons behind the hamburger as a dropdown panel.
+@media (max-width: 991.98px) {
+  .site-header__inner { flex-wrap: wrap; }
+
+  .site-nav__toggle { display: inline-flex; }
+
+  .site-nav {
+    flex-basis: 100%;            // drops onto its own full-width row under the brand
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    border-radius: var(--tc-radius);
+    background: #fff;
+    box-shadow: 0 18px 42px -14px rgba(124, 58, 237, .25);
+  }
+
+  .site-nav__links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .site-nav__icons { gap: 28px; }
+}
+
+// At lg+, keep the nav inline even though it carries Bootstrap's .collapse class.
+@media (min-width: 992px) {
+  .site-nav.collapse { display: flex !important; }
+}
+
 // ===================== CARD =====================
 // Maps 1:1 to app/views/games/_game.html.erb
 .game-card {
