@@ -1,16 +1,17 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Games" %>
 
-<h1>Games</h1>
+<% if notice.present? %>
+  <p class="alert alert-success" role="alert"><%= notice %></p>
+<% end %>
 
-<div id="games">
-  <% @games.each do |game| %>
-    <%= render game %>
-    <p>
-      <%= link_to "Show this game", game %>
-    </p>
-  <% end %>
-</div>
+<main class="games-page">
+  <div class="container-fluid px-4">
 
-<%= link_to "New game", new_game_path %>
+    <div class="games-grid">
+      <% @games.each do |game| %>
+        <%= render game %>
+      <% end %>
+    </div>
+
+  </div>
+</main>

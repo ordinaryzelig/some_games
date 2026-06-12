@@ -1,0 +1,39 @@
+// app/assets/stylesheets/layouts/_navbar.scss
+
+.navbar {
+  background: rgba(8, 6, 26, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  .navbar-brand {
+    display:     flex;
+    align-items: center;
+    gap:         7px;
+    color:       $tc-text;
+    font-size:   0.95rem;
+    font-weight: 600;
+
+    &:hover { color: $tc-text; }
+  }
+
+  .nav-link {
+    color:     rgba(255, 255, 255, 0.65);
+    font-size: 0.875rem;
+    transition: color 0.15s ease;
+
+    &:hover,
+    &.active { color: $tc-text; }
+  }
+
+  .btn-primary {
+    background:   $tc-accent;
+    border-color: $tc-accent;
+    font-size:    0.875rem;
+
+    &:hover {
+      background:   darken(#7c5cfc, 8%);
+      border-color: darken(#7c5cfc, 8%);
+    }
+  }
+}

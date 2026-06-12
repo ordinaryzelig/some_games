@@ -7,4 +7,5 @@ class Game < ApplicationRecord
     :as_is     => 4,
   }
 
+  attr_accessor :bids_count
 end

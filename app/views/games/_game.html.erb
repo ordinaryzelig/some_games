@@ -1,19 +1,85 @@
-<div id="<%= dom_id game %>">
-  <%= image_tag "board_game_images/#{game.name}.jpg" %>
+<!-- <div id="<%= dom_id game %>">
+  <%#= image_tag "board_game_images/#{game.name}.jpg" %>
 
   <div>
     <strong>Name:</strong>
-    <%= game.name %>
+    <%#= game.name %>
   </div>
 
   <div>
     <strong>Condition:</strong>
-    <%= game.condition %>
+    <%#= game.condition %>
   </div>
 
   <div>
     <strong>Price cents:</strong>
-    <%= game.price_cents %>
+    <%#= game.price_cents %>
   </div>
 
-</div>
+</div> -->
+
+
+<article class="game-card" id="<%= dom_id game %>">
+
+  <%# ── Image ──────────────────────────────────────── %>
+  <%= link_to game_path(game), class: "game-card__img-wrap", aria: { label: game.name } do %>
+    <%= image_tag "board_game_images/#{game.name}.jpg",
+        alt:     game.name,
+        loading: "lazy",
+        class:   "game-card__img" %>
+  <% end %>
+
+  <%# ── Body ──────────────────────────────────────── %>
+  <div class="game-card__body">
+    <div class="game-card_head">
+    <h2 class="game-card__title">
+      <%= link_to game.name, game_path(game) %>
+    </h2>
+    </div>
+
+    <%# ── Footer meta (condition / price / bids / payments) ── %>
+    <div class="game-card__footer">
+
+      <span class="game-card__condition"><%= game.condition %></span>
+
+      <span class="game-card__price">
+        <%= number_to_currency(game.price_cents / 100.0) %>
+      </span>
+
+      <span class="game-card__bids">
+        <%= pluralize(game.bids_count, "bid") %>
+      </span>
+
+      <div class="game-card__pays" aria-label="Accepted payment methods">
+        <span class="game-card__pays-label">Accepts:</span>
+
+        <%# Payment method icons — render only what the listing accepts %>
+        <%# if game.accepts_credit_card? %>
+          <span class="pay-icon" aria-label="Credit card">
+            <i class="bi bi-credit-card-2-front"></i>
+          </span>
+        <%# end %>
+
+        <%# if game.accepts_square? %>
+          <span class="pay-icon" aria-label="Square">
+            <i class="bi bi-square-fill pay-icon__square"></i>
+          </span>
+        <%# end %>
+
+        <%# if game.accepts_paypal? %>
+          <span class="pay-icon pay-icon--text" aria-label="PayPal">P</span>
+        <%# end %>
+
+        <%# if game.accepts_venmo? %>
+          <span class="pay-icon pay-icon--text" aria-label="Venmo">V</span>
+        <%# end %>
+
+        <%# if game.accepts_zelle? %>
+          <span class="pay-icon pay-icon--text" aria-label="Zelle">Z</span>
+        <%# end %>
+      </div>
+
+    </div><%# /.game-card__footer %>
+  </div><%# /.game-card__body %>
+
+</article>

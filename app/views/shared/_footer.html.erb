@@ -1,0 +1,42 @@
+<footer class="site-footer">
+
+  <%# ── Crystal cube illustration ───────────────────── %>
+  <div class="site-footer__cube" aria-hidden="true">
+    <img src="/images/somelogo.svg" style="margin-top:-110px;" alt="Cube">
+
+
+  </div>
+
+
+  <%# ── Bar: brand / nav / social ───────────────────── %>
+  <div class="site-footer__bar container-fluid px-4">
+
+    <div class="site-footer__brand">
+    <img src="/images/LogoWhite.png" alt="Cube">
+    </div>
+
+    
+    <div class="site-footer__social" aria-label="Social media links">
+    <div>
+    <button class="footer-button">Find events near you</button>
+    </div>
+    <div class='social-icons'>
+    <a href="https://facebook.com"  target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-link">
+    <i   class="bi bi-facebook"></i>
+    </a>
+    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-link">
+    <i class="bi bi-instagram "></i>
+    </a>
+    <a href="https://x.com"         target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="social-link">
+    <i  class="bi bi-twitter-x "></i>
+    </a>
+    </div>
+    </div>
+    <nav class="site-footer__nav" aria-label="Footer navigation">
+      <%= link_to "About",          "" %>
+      <%= link_to "Support",        "" %>
+      <%= link_to "Privacy Policy", "" %>
+    </nav>
+    
+    </div><%# /.site-footer__bar %>
+</footer>

@@ -1,0 +1,115 @@
+.site-footer {
+  background-color: rgb(22, 13, 39);
+  height: 415px;
+
+  @media (max-width: 770px) {
+    height: 500px;
+  }
+
+  .site-footer__cube {
+    display: flex;
+    justify-content: center;
+    padding: 0 24px;
+
+    @media (max-width: 770px) {
+      margin-left: 40px;
+    }
+  }
+
+  .site-footer__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1317px;
+    margin: 0 auto;
+    padding-bottom: 28px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 18px;
+      text-align: center;
+    }
+  }
+
+  .site-footer__brand {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #fff;
+    font-size: 0.88rem;
+    font-weight: 500;
+    margin-top: -140px;
+
+    @media (max-width: 770px) {
+      margin-left: 70px;
+    }
+    @media(max-width:800px){
+      margin-top: 0px;
+    }
+
+    svg {
+      flex-shrink: 0;
+    }
+  }
+
+  .site-footer__nav {
+    display: flex;
+    gap: 32px;
+    width: 272px;
+    height: 15px;
+    padding: 0 24px;
+    margin-top: -140px;
+
+    a {
+      font-size: 0.75rem;
+      color: #fff;
+      transition: color 0.15s ease;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+     @media(max-width:800px){
+      margin-top: 0px;
+    }
+  }
+
+  .site-footer__social {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin-top: 10px;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgb(149, 86, 255);
+      color: black;
+      border-radius: 50%;
+      font-size: 22px;
+    }
+    .footer-button{
+    background: linear-gradient(205.32deg, rgba(151, 89, 255, 0.5) 14.96%, rgba(123, 45, 255, 0.5) 41.35%, rgba(44, 26, 77, 0.5) 79.7%, rgba(22, 13, 39, 0.5) 101.02%);
+    color: white;
+    padding: 16px 24px 40px 24px;
+    border-radius: 8px;
+    width: 209px;
+    height: 50px;
+}
+  }
+
+  .social-icons {
+    margin-left: 27px;
+    width: 181px;
+    height: 50px;
+    display: flex;
+    gap: 15px;
+
+    @media (max-width: 770px) {
+      margin-left: 27px;
+    }
+  }
+}
