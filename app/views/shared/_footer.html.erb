@@ -1,0 +1,43 @@
+<footer class="site-footer">
+  <svg class="site-footer__logo" viewBox="0 0 80 92" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="cube-top" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#b78cff"/>
+        <stop offset="1" stop-color="#6ea8ff"/>
+      </linearGradient>
+      <linearGradient id="cube-left" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#7a4ff0"/>
+        <stop offset="1" stop-color="#4a2db0"/>
+      </linearGradient>
+      <linearGradient id="cube-right" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#5f7df5"/>
+        <stop offset="1" stop-color="#3a3aa0"/>
+      </linearGradient>
+    </defs>
+    <polygon points="40,8 72,26 40,44 8,26" fill="url(#cube-top)"/>
+    <polygon points="8,26 40,44 40,82 8,64" fill="url(#cube-left)"/>
+    <polygon points="72,26 40,44 40,82 72,64" fill="url(#cube-right)"/>
+  </svg>
+
+  <div class="site-footer__inner">
+    <div class="site-footer__top">
+      <span class="site-footer__brand">
+        <i class="bi bi-box-fill"></i> Turnip cake
+      </span>
+
+      <nav class="site-footer__links">
+        <%= link_to "About", "#" %>
+        <%= link_to "Support", "#" %>
+        <%= link_to "Privacy Policy", "#" %>
+      </nav>
+    </div>
+
+    <button type="button" class="site-footer__cta">Find events near you</button>
+
+    <div class="site-footer__social">
+      <%= link_to "#", "aria-label": "Facebook" do %><i class="bi bi-facebook"></i><% end %>
+      <%= link_to "#", "aria-label": "Instagram" do %><i class="bi bi-instagram"></i><% end %>
+      <%= link_to "#", "aria-label": "X" do %><i class="bi bi-twitter-x"></i><% end %>
+    </div>
+  </div>
+</footer>
