@@ -1,19 +1,21 @@
-<div id="<%= dom_id game %>">
-  <%= image_tag "board_game_images/#{game.name}.jpg" %>
+<%= link_to game, id: dom_id(game), class: "game-card" do %>
+  <%= image_tag "board_game_images/#{game.name}.jpg", alt: game.name %>
 
-  <div>
-    <strong>Name:</strong>
-    <%= game.name %>
+  <div class="game-card__body">
+    <h2 class="game-card__title"><%= game.name %></h2>
+
+    <div class="game-card__meta">
+      <div class="game-card__condition"><%= game.condition.humanize %></div>
+      <div class="game-card__price"><%= number_to_currency(game.price_cents / 100.0) %></div>
+      <div class="game-card__bids">2 bids</div>
+
+      <div class="game-card__accepts">
+        Accepts:
+        <i class="bi bi-credit-card-2-back"></i>
+        <i class="bi bi-currency-dollar"></i>
+        <i class="bi bi-paypal"></i>
+        <i class="bi bi-wallet2"></i>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <strong>Condition:</strong>
-    <%= game.condition %>
-  </div>
-
-  <div>
-    <strong>Price cents:</strong>
-    <%= game.price_cents %>
-  </div>
-
-</div>
+<% end %>
